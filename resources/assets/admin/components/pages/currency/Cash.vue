@@ -16,6 +16,7 @@
                         <span v-if="pagination.disabled || pagination.currend">{{ pagination.page }}</span>
                         <router-link v-else :to="buildRoute(pagination.offset)">{{ pagination.page }}</router-link>
                     </li>
+
                 </template>
             </ui-offset-paginator>
 

@@ -2,23 +2,9 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus;
+
+namespace Leven;
 
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
@@ -30,7 +16,7 @@ class Application extends LaravelApplication
      *
      * @var string
      */
-    const VERSION = '1.7.6';
+    const VERSION = '1.0.0';
 
     /**
      * The core vendor YAML file.
@@ -51,7 +37,7 @@ class Application extends LaravelApplication
 
         // Load configuration after.
         $this->afterBootstrapping(\Illuminate\Foundation\Bootstrap\LoadConfiguration::class, function ($app) {
-            $app->make(\Zhiyi\Plus\Bootstrap\LoadConfiguration::class)
+            $app->make(\Leven\Bootstrap\LoadConfiguration::class)
                 ->handle();
         });
     }
@@ -116,8 +102,8 @@ class Application extends LaravelApplication
         $aliases = [
             'app' => [static::class],
             'cdn' => [
-                \Zhiyi\Plus\Contracts\Cdn\UrlFactory::class,
-                \Zhiyi\Plus\Cdn\UrlManager::class,
+                \Leven\Contracts\Cdn\UrlFactory::class,
+                \Leven\Cdn\UrlManager::class,
             ],
         ];
 

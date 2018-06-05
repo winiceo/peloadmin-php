@@ -1,20 +1,6 @@
 <?php
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
+
 
 if (! Route::has('home')) {
     /**
@@ -27,7 +13,7 @@ if (! Route::has('home')) {
     // Not defined "/" route,
     // Create a default "/" route.
     if (! $route) {
-        $route = Route::get('/', 'HomeController@welcome');
+        $route = Route::redirect("/","admin");//Route::get('/', 'HomeController@index');
     }
 
     // Set "/" route name as "home"

@@ -1,20 +1,6 @@
 <?php
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
+
 
 return [
 
@@ -171,12 +157,12 @@ return [
         /*
          * Application Service Providers...
          */
-        Zhiyi\Plus\Providers\AppServiceProvider::class,
-        Zhiyi\Plus\Providers\AuthServiceProvider::class,
-        // Zhiyi\Plus\Providers\BroadcastServiceProvider::class,
-        Zhiyi\Plus\Providers\EventServiceProvider::class,
-        Zhiyi\Plus\Providers\RouteServiceProvider::class,
-        Zhiyi\Plus\Providers\NotificationServiceProvider::class,
+        Leven\Providers\AppServiceProvider::class,
+        Leven\Providers\AuthServiceProvider::class,
+        // Leven\Providers\BroadcastServiceProvider::class,
+        Leven\Providers\EventServiceProvider::class,
+        Leven\Providers\RouteServiceProvider::class,
+        Leven\Providers\NotificationServiceProvider::class,
 
     ],
 

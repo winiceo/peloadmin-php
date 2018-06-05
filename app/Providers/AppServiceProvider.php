@@ -2,30 +2,16 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Providers;
+
+namespace Leven\Providers;
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use function Zhiyi\Plus\validateUsername;
-use Zhiyi\Plus\Packages\Wallet\TypeManager;
-use function Zhiyi\Plus\validateChinaPhoneNumber;
-use Zhiyi\Plus\Packages\Wallet\TargetTypeManager;
+use function Leven\validateUsername;
+use Leven\Packages\Wallet\TypeManager;
+use function Leven\validateChinaPhoneNumber;
+use Leven\Packages\Wallet\TargetTypeManager;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 class AppServiceProvider extends ServiceProvider
@@ -51,7 +37,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('cdn', function ($app) {
-            return new \Zhiyi\Plus\Cdn\UrlManager($app);
+            return new \Leven\Cdn\UrlManager($app);
         });
 
         $this->app->singleton(TypeManager::class, function ($app) {
@@ -125,8 +111,8 @@ class AppServiceProvider extends ServiceProvider
     protected function registerMorpMap()
     {
         $this->setMorphMap([
-            'users' => \Zhiyi\Plus\Models\User::class,
-            'comments' => \Zhiyi\Plus\Models\Comment::class,
+            'users' => \Leven\Models\User::class,
+            'comments' => \Leven\Models\Comment::class,
         ]);
     }
 

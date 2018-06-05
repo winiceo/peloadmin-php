@@ -52,12 +52,7 @@ $lefyNavWidth: 240px;
           <span class="caret"></span>
         </button>
         <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdownMune">
-          <li>
-            <a href="/" target="_blank">
-              <span class="glyphicon glyphicon-new-window"></span>
-              打开前台
-            </a>
-          </li>
+
           <li role="separator" class="divider"></li>
           <li>
             <a href="/auth/logout" >

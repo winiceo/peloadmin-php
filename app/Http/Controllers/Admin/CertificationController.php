@@ -2,32 +2,18 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Http\Controllers\Admin;
 
-use Zhiyi\Plus\Models\User;
+namespace Leven\Http\Controllers\Admin;
+
+use Leven\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
-use Zhiyi\Plus\Models\Certification;
-use Zhiyi\Plus\Http\Controllers\Controller;
-use Zhiyi\Plus\Models\FileWith as FileWithModel;
-use Zhiyi\Plus\Http\Requests\API2\UserCertification;
+use Leven\Models\Certification;
+use Leven\Http\Controllers\Controller;
+use Leven\Models\FileWith as FileWithModel;
+use Leven\Http\Requests\API2\UserCertification;
 
 class CertificationController extends Controller
 {
@@ -354,7 +340,7 @@ class CertificationController extends Controller
      * File not with file models.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Zhiyi\Plus\Models\FileWith $fileWithModel
+     * @param \Leven\Models\FileWith $fileWithModel
      * @return \Illuminate\Support\Collection
      * @author Seven Du <shiweidu@outlook.com>
      */

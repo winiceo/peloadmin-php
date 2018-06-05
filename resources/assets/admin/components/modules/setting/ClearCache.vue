@@ -8,12 +8,11 @@
       <div class="alert alert-warning">
         如果没有特殊情况，请不要执行这个操作。执行后所有的缓存都将被删除！
       </div>
-      <bootstrap-ui-kit:ui-button
-        class="btn btn-danger"
-        lable="清理缓存"
-        proces-lable="清理中..."
-        @click="clearHandle"
-      />
+
+      <sb-ui-button class="btn btn-danger"
+                    lable="清理缓存"
+                    proces-lable="清理中..."
+                    @click="clearHandle"></sb-ui-button>
     </div>
 
   </div>

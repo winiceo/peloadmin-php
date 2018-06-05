@@ -2,34 +2,20 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Http\Controllers\Admin;
+
+namespace Leven\Http\Controllers\Admin;
 
 use Carbon\Carbon;
-use Zhiyi\Plus\Models\Area;
+use Leven\Models\Area;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Zhiyi\Plus\Models\CommonConfig;
+use Leven\Models\CommonConfig;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Support\Facades\Cache;
-use Zhiyi\Plus\Support\Configuration;
+use Leven\Support\Configuration;
 use Illuminate\Contracts\Config\Repository;
-use Zhiyi\Plus\Http\Controllers\Controller;
+use Leven\Http\Controllers\Controller;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 
@@ -38,7 +24,7 @@ class SiteController extends Controller
     /**
      * The store CommonConfig instance.
      *
-     * @var Zhiyi\Plus\Models\CommonConfig
+     * @var Leven\Models\CommonConfig
      */
     protected $commonCinfigModel;
 
@@ -72,7 +58,7 @@ class SiteController extends Controller
             ])->setStatusCode(403);
         }
 
-        $name = $config->get('app.name', 'ThinkSNS+');
+        $name = $config->get('app.name', 'Pelo管理系统');
         $keywords = $config->get('app.keywords');
         $description = $config->get('app.description');
         $icp = $config->get('app.icp');
@@ -447,7 +433,7 @@ class SiteController extends Controller
             'execute_time' => ini_get('max_execution_time').'秒',
             'server_date' => date('Y年n月j日 H:i:s'),
             'local_date' => gmdate('Y年n月j日 H:i:s', time() + 8 * 3600),
-            'domain_ip' => $_SERVER['SERVER_NAME'].' [ '.$_SERVER['SERVER_ADDR'].' ]',
+            'domain_ip' => $_SERVER['SERVER_NAME'] ,
             'user_ip' => $_SERVER['REMOTE_ADDR'],
             'disk' => round((disk_free_space('.') / (1024 * 1024)), 2).'M',
         ];

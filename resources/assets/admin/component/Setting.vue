@@ -19,52 +19,52 @@
               <router-link to="/setting" tag="li" active-class="active" exact>
                 <a href="#">基本信息</a>
               </router-link>
-              <router-link to="/setting/site" tag="li" active-class="active">
-                <a href="#">站点设置</a>
+              <!--<router-link to="/setting/site" tag="li" active-class="active">-->
+                <!--<a href="#">站点设置</a>-->
+              <!--</router-link>-->
+              <!--<router-link to="/setting/back-end-setting" tag="li" active-class="active">-->
+                <!--<a href="#">后台配置</a> -->
+              <!--</router-link>-->
+              <!--<router-link to="/setting/area" tag="li" active-class="active">-->
+                <!--<a href="#">地区库</a>-->
+              <!--</router-link>-->
+              <!--<router-link to="/setting/mail" tag="li" active-class="active">-->
+                <!--<a href="#">邮件</a>-->
+              <!--</router-link>-->
+              <!--<li role="presentation" class="dropdown">-->
+                <!--<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">-->
+                  <!--标签设置 <span class="caret"></span>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-menu">-->
+                  <!--<router-link tag="li" active-class="active" to="/setting/tags">-->
+                    <!--<a href="#">标签列表</a>-->
+                  <!--</router-link>-->
+                  <!--<router-link tag="li" active-class="active" to="/setting/tag-categories">-->
+                    <!--<a href="#">标签分类</a>-->
+                  <!--</router-link>-->
+                  <!--<router-link tag="li" active-class="active" to="/setting/addtag">-->
+                    <!--<a href="#">添加标签</a>-->
+                  <!--</router-link>-->
+                <!--</ul>-->
+              <!--</li>-->
+              <router-link to="/setting/coin" tag="li" active-class="active">
+                <a href="#">币种设置</a>
               </router-link>
-              <router-link to="/setting/back-end-setting" tag="li" active-class="active">
-                <a href="#">后台配置</a> 
-              </router-link>
-              <router-link to="/setting/area" tag="li" active-class="active">
-                <a href="#">地区库</a>
-              </router-link>
-              <router-link to="/setting/mail" tag="li" active-class="active">
-                <a href="#">邮件</a>
-              </router-link>
-              <li role="presentation" class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                  标签设置 <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <router-link tag="li" active-class="active" to="/setting/tags">
-                    <a href="#">标签列表</a>
-                  </router-link>
-                  <router-link tag="li" active-class="active" to="/setting/tag-categories">
-                    <a href="#">标签分类</a>
-                  </router-link>
-                  <router-link tag="li" active-class="active" to="/setting/addtag">
-                    <a href="#">添加标签</a>
-                  </router-link>
-                </ul>
-              </li>
+              <!--&lt;!&ndash; 敏感词 &ndash;&gt;-->
 
-              <!-- 敏感词 -->
-              <router-link to="/setting/sensitives" tag="li" active-class="active">
-                <a href="#">敏感词</a>
-              </router-link>
-              
-              <!-- IOS IAP 设置 -->
-              <router-link to="/setting/ios-iap" tag="li" active-class="active">
-                <a href="#">IOS IAP</a>
-              </router-link>
+              <!---->
+              <!--&lt;!&ndash; IOS IAP 设置 &ndash;&gt;-->
+              <!--<router-link to="/setting/ios-iap" tag="li" active-class="active">-->
+                <!--<a href="#">IOS IAP</a>-->
+              <!--</router-link>-->
 
               <router-link to="/setting/upload-setting" tag="li" active-class="active">
                 <a href="#">上传设置</a>
               </router-link>
 
-              <router-link to="/setting/server" tag="li" active-class="active">
-                <a href="#">服务器信息</a> 
-              </router-link>
+              <!--<router-link to="/setting/server" tag="li" active-class="active">-->
+                <!--<a href="#">服务器信息</a> -->
+              <!--</router-link>-->
 
             </ul>
             <!-- End settings nav. -->

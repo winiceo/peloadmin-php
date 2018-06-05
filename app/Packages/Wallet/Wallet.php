@@ -2,50 +2,36 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Packages\Wallet;
+
+namespace Leven\Packages\Wallet;
 
 use JsonSerializable;
-use Zhiyi\Plus\Models\User as UserModel;
+use Leven\Models\User as UserModel;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
-use Zhiyi\Plus\Models\NewWallet as WalletModel;
+use Leven\Models\NewWallet as WalletModel;
 
 class Wallet implements Arrayable, Jsonable, JsonSerializable
 {
     /**
      * The Wallet user.
      *
-     * @var \Zhiyi\Plus\Models\User
+     * @var \Leven\Models\User
      */
     protected $user;
 
     /**
      * The user wallet.
      *
-     * @var \Zhiyi\Plus\Models\NewWallet
+     * @var \Leven\Models\NewWallet
      */
     protected $wallet;
 
     /**
      * Create wallet.
      *
-     * @param int|\Zhiyi\Plus\Models\User $user
+     * @param int|\Leven\Models\User $user
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function __construct($user = null)
@@ -58,7 +44,7 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
     /**
      * Set user.
      *
-     * @param int|\Zhiyi\Plus\Models\User $user
+     * @param int|\Leven\Models\User $user
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setUser($user)
@@ -71,7 +57,7 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
     /**
      * Get the user wallet model.
      *
-     * @return \Zhiyi\Plus\Models\NewWallet
+     * @return \Leven\Models\NewWallet
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getWalletModel(): WalletModel
@@ -109,6 +95,8 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
     public function decrement(int $amount)
     {
         $wallet = $this->getWalletModel();
+
+
         $wallet->balance -= $amount;
         $wallet->total_expenses += $amount;
         $wallet->save();
@@ -134,8 +122,8 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
     /**
      * Resolve user.
      *
-     * @param int|\Zhiyi\Plus\Models\User $user
-     * @return \Zhiyi\Plus\Models\User
+     * @param int|\Leven\Models\User $user
+     * @return \Leven\Models\User
      * @throws \Exception
      * @author Seven Du <shiweidu@outlook.com>
      */
@@ -155,8 +143,8 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
     /**
      * Resolve the user wallet.
      *
-     * @param \Zhiyi\Plus\Models\User $user
-     * @return \Zhiyi\Plus\Models\User
+     * @param \Leven\Models\User $user
+     * @return \Leven\Models\User
      * @author Seven Du <shiweidu@outlook.com>
      */
     protected function resolveWallet(UserModel $user): UserModel
@@ -230,7 +218,7 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
      * Find user or fail.
      *
      * @param int $user
-     * @return \Zhiyi\Plus\Models\User
+     * @return \Leven\Models\User
      * @author Seven Du <shiweidu@outlook.com>
      */
     protected function userFindOrFail(int $user): UserModel
@@ -242,7 +230,7 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
      * Find wallet.
      *
      * @param int $user
-     * @return Zhiyi\Plus\Models\NewWallet
+     * @return Leven\Models\NewWallet
      * @author Seven Du <shiweidu@outlook.com>
      */
     protected function walletFind(int $user)

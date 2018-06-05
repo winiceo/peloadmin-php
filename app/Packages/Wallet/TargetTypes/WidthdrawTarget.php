@@ -2,28 +2,14 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Packages\Wallet\TargetTypes;
+
+namespace Leven\Packages\Wallet\TargetTypes;
 
 use DB;
-use Zhiyi\Plus\Packages\Wallet\Order;
-use Zhiyi\Plus\Packages\Wallet\Wallet;
-use Zhiyi\Plus\Models\WalletCash as WalletCashModel;
+use Leven\Packages\Wallet\Order;
+use Leven\Packages\Wallet\Wallet;
+use Leven\Models\WalletCash as WalletCashModel;
 
 class WidthdrawTarget extends Target
 {
@@ -41,7 +27,7 @@ class WidthdrawTarget extends Target
      * @return mixed
      * @author BS <414606094@qq.com>
      */
-    public function handle($type, $account): bool
+    public function handle($type, $address,$coin_id): bool
     {
         if (! $this->order->hasWait()) {
             return true;
@@ -49,11 +35,12 @@ class WidthdrawTarget extends Target
 
         $this->initWallet();
 
-        $orderHandle = function () use ($type, $account) {
+        $orderHandle = function () use ($type, $address,$coin_id) {
             $this->order->saveStateSuccess();
+
             $this->wallet->{$this->method[$this->order->getOrderModel()->type]}($this->order->getOrderModel()->amount);
 
-            $this->createCash($type, $account);
+            $this->createCash($type, $address,$coin_id);
 
             return true;
         };
@@ -96,13 +83,18 @@ class WidthdrawTarget extends Target
      * @return void
      * @author BS <414606094@qq.com>
      */
-    protected function createCash($type, $account)
+    protected function createCash($type, $address,$coin_id)
     {
+
+
         $cashModel = new WalletCashModel();
         $cashModel->user_id = $this->order->getOrderModel()->owner_id;
-        $cashModel->value = $this->order->getOrderModel()->amount;
+        $cashModel->amount = $this->order->getOrderModel()->amount;
         $cashModel->type = $type;
-        $cashModel->account = $account;
+        $cashModel->address = $address;
+        $cashModel->coin_id = $coin_id;
+
+
         $cashModel->status = 0;
 
         $cashModel->save();

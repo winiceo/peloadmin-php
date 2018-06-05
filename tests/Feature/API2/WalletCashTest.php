@@ -2,28 +2,14 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Tests\Feature\API2;
 
-use Zhiyi\Plus\Tests\TestCase;
-use Zhiyi\Plus\Models\User as UserModel;
-use Zhiyi\Plus\Repository\UserWalletCashType;
-use Zhiyi\Plus\Models\WalletCash as WalletCashModel;
+namespace Leven\Tests\Feature\API2;
+
+use Leven\Tests\TestCase;
+use Leven\Models\User as UserModel;
+use Leven\Repository\UserWalletCashType;
+use Leven\Models\WalletCash as WalletCashModel;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class WalletCashTest extends TestCase

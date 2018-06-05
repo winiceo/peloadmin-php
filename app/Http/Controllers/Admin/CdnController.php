@@ -2,27 +2,13 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Http\Controllers\Admin;
+
+namespace Leven\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Zhiyi\Plus\Http\Controllers\Controller;
-use Zhiyi\Plus\Support\Configuration as ConfigurationRepository;
+use Leven\Http\Controllers\Controller;
+use Leven\Support\Configuration as ConfigurationRepository;
 
 class CdnController extends Controller
 {
@@ -60,7 +46,7 @@ class CdnController extends Controller
      * Qiniu setting.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Zhiyi\Plus\Support\Configuration $repository
+     * @param \Leven\Support\Configuration $repository
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setQiniu(Request $request, ConfigurationRepository $repository)
@@ -94,7 +80,7 @@ class CdnController extends Controller
     /**
      * 设置本地文件系统公开磁盘.
      *
-     * @param \Zhiyi\Plus\Support\Configuration $repository
+     * @param \Leven\Support\Configuration $repository
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setPublicDisk(ConfigurationRepository $repository)
@@ -122,7 +108,7 @@ class CdnController extends Controller
      * 设置 local 磁盘配置.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Zhiyi\Plus\Support\Configuration $repository
+     * @param \Leven\Support\Configuration $repository
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setLocalDisk(Request $request, ConfigurationRepository $repository)
@@ -151,7 +137,7 @@ class CdnController extends Controller
      * 设置 S3 配置.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Zhiyi\Plus\Support\Configuration $repository
+     * @param \Leven\Support\Configuration $repository
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setS3Disk(Request $request, ConfigurationRepository $repository)
@@ -191,7 +177,7 @@ class CdnController extends Controller
      * alioss setting.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Zhiyi\Plus\Support\Configuration $repository
+     * @param \Leven\Support\Configuration $repository
      * @author BS <414606094@qq.com>
      */
     public function setAlioss(Request $request, ConfigurationRepository $repository)

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace {namespace}\Providers;
 
-use Zhiyi\Plus\Support\PackageHandler;
+use Leven\Support\PackageHandler;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -138,7 +138,7 @@ class AppServiceProvider extends ServiceProvider
      * Register handler.
      *
      * @param string $name
-     * @param \Zhiyi\Plus\Support\PackageHandler|string $handler
+     * @param \Leven\Support\PackageHandler|string $handler
      * @return void
      */
     private function loadHandleFrom(string $name, $handler)

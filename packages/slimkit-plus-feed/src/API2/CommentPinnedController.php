@@ -2,29 +2,15 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
+
 
 namespace Zhiyi\Component\ZhiyiPlus\PlusComponentFeed\API2;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Zhiyi\Plus\Http\Controllers\Controller;
-use Zhiyi\Plus\Models\Comment as CommentModel;
-use Zhiyi\Plus\Models\WalletCharge as WalletChargeModel;
+use Leven\Http\Controllers\Controller;
+use Leven\Models\Comment as CommentModel;
+use Leven\Models\WalletCharge as WalletChargeModel;
 use Illuminate\Contracts\Routing\ResponseFactory as ResponseContract;
 use Zhiyi\Component\ZhiyiPlus\PlusComponentFeed\Models\Feed as FeedModel;
 use Zhiyi\Component\ZhiyiPlus\PlusComponentFeed\Models\FeedPinned as FeedPinnedModel;
@@ -66,9 +52,9 @@ class CommentPinnedController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param \Illuminate\Contracts\Routing\ResponseFactory $response
      * @param \Carbon\Carbon $dateTime
-     * @param \Zhiyi\Plus\Models\WalletCharge $charge
+     * @param \Leven\Models\WalletCharge $charge
      * @param \Zhiyi\Component\ZhiyiPlus\PlusComponentFeed\Models\Feed $feed
-     * @param \Zhiyi\Plus\Models\Comment $comment
+     * @param \Leven\Models\Comment $comment
      * @param \Zhiyi\Component\ZhiyiPlus\PlusComponentFeed\Models\FeedPinned $pinned
      * @return mixed
      * @author Seven Du <shiweidu@outlook.com>
@@ -164,7 +150,7 @@ class CommentPinnedController extends Controller
      * @param \Illuminate\Contracts\Routing\ResponseFactory $response
      * @param \Carbon\Carbon $dateTime
      * @param \Zhiyi\Component\ZhiyiPlus\PlusComponentFeed\Models\Feed $feed
-     * @param \Zhiyi\Plus\Models\Comment $comment
+     * @param \Leven\Models\Comment $comment
      * @return mixed
      * @author Seven Du <shiweidu@outlook.com>
      */

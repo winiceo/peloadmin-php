@@ -1,30 +1,16 @@
 <?php
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Packages\Currency\Processes;
+
+namespace Leven\Packages\Currency\Processes;
 
 use DB;
 use GuzzleHttp\Client;
-use Zhiyi\Plus\Packages\Currency\Order;
-use Zhiyi\Plus\Packages\Currency\Process;
-use Zhiyi\Plus\Repository\CurrencyConfig;
-use Zhiyi\Plus\Models\CommonConfig as CommonConfigModel;
-use Zhiyi\Plus\Models\CurrencyOrder as CurrencyOrderModel;
+use Leven\Packages\Currency\Order;
+use Leven\Packages\Currency\Process;
+use Leven\Repository\CurrencyConfig;
+use Leven\Models\CommonConfig as CommonConfigModel;
+use Leven\Models\CurrencyOrder as CurrencyOrderModel;
 
 class AppStorePay extends Process
 {
@@ -48,7 +34,7 @@ class AppStorePay extends Process
      * 验证票据.
      *
      * @param string $receipt
-     * @param Zhiyi\Plus\Models\CurrencyOrderModel
+     * @param Leven\Models\CurrencyOrderModel
      * @return mixed
      * @author BS <414606094@qq.com>
      */
@@ -100,7 +86,7 @@ class AppStorePay extends Process
      *
      * @param int $owner
      * @param int $amount
-     * @return Zhiyi\Plus\Models\CurrencyOrderModel
+     * @return Leven\Models\CurrencyOrderModel
      * @author BS <414606094@qq.com>
      */
     public function createOrder(int $owner_id, int $amount): CurrencyOrderModel

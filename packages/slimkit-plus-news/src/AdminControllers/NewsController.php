@@ -2,32 +2,18 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
+
 
 namespace Zhiyi\Component\ZhiyiPlus\PlusComponentNews\AdminControllers;
 
 use DB;
-use Zhiyi\Plus\Models\User;
+use Leven\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Zhiyi\Plus\Models\FileWith;
-use Zhiyi\Plus\Models\Tag as TagModel;
-use Zhiyi\Plus\Http\Controllers\Controller;
-use Zhiyi\Plus\Models\WalletCharge as WalletChargeModel;
+use Leven\Models\FileWith;
+use Leven\Models\Tag as TagModel;
+use Leven\Http\Controllers\Controller;
+use Leven\Models\WalletCharge as WalletChargeModel;
 use Zhiyi\Component\ZhiyiPlus\PlusComponentNews\Models\News;
 use function zhiyi\Component\ZhiyiPlus\PlusComponentNews\getShort;
 use Zhiyi\Component\ZhiyiPlus\PlusComponentNews\Models\NewsCollection;

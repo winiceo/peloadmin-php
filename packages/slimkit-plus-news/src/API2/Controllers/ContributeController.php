@@ -2,30 +2,16 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
+
 
 namespace Zhiyi\Component\ZhiyiPlus\PlusComponentNews\API2\Controllers;
 
 use Illuminate\Http\Request;
-use Zhiyi\Plus\Models\Tag as TagModel;
-use Zhiyi\Plus\Concerns\FindMarkdownFileTrait;
-use Zhiyi\Plus\Models\FileWith as FileWithModel;
-use Zhiyi\Plus\Models\WalletCharge as WalletChargeModel;
-use Zhiyi\Plus\Packages\Currency\Processes\User as UserProcess;
+use Leven\Models\Tag as TagModel;
+use Leven\Concerns\FindMarkdownFileTrait;
+use Leven\Models\FileWith as FileWithModel;
+use Leven\Models\WalletCharge as WalletChargeModel;
+use Leven\Packages\Currency\Processes\User as UserProcess;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Zhiyi\Component\ZhiyiPlus\PlusComponentNews\Models\News as NewsModel;
 use Illuminate\Contracts\Routing\ResponseFactory as ResponseFactoryContract;

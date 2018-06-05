@@ -2,29 +2,15 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Cdn\Adapter;
 
-use Zhiyi\Plus\Cdn\Refresh;
+namespace Leven\Cdn\Adapter;
+
+use Leven\Cdn\Refresh;
 use Intervention\Image\Image;
 use Intervention\Image\Constraint;
 use Intervention\Image\ImageManager;
-use Zhiyi\Plus\Contracts\Cdn\UrlGenerator as FileUrlGeneratorContract;
+use Leven\Contracts\Cdn\UrlGenerator as FileUrlGeneratorContract;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 use Illuminate\Contracts\Filesystem\Factory as FilesystemFactoryContract;
 
@@ -104,7 +90,7 @@ class Filesystem implements FileUrlGeneratorContract
     /**
      * Refresh the cdn files and dirs.
      *
-     * @param \Zhiyi\Plus\Cdn\Refresh $refresh
+     * @param \Leven\Cdn\Refresh $refresh
      * @return void
      * @author Seven Du <shiweidu@outlook.com>
      */

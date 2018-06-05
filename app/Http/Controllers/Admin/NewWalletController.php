@@ -16,12 +16,12 @@
  * +----------------------------------------------------------------------+
  */
 
-namespace Zhiyi\Plus\Http\Controllers\Admin;
+namespace Leven\Http\Controllers\Admin;
 
 use DB;
 use Illuminate\Http\Request;
-use Zhiyi\Plus\Models\WalletOrder;
-use Zhiyi\Plus\Http\Controllers\Controller;
+use Leven\Models\WalletOrder;
+use Leven\Http\Controllers\Controller;
 
 class NewWalletController extends Controller
 {

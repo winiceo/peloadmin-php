@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace {namespace}\Handlers;
 
-use Zhiyi\Plus\Utils\Path;
+use Leven\Utils\Path;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application as ApplicationContract;
 
-class DevPackageHandler extends \Zhiyi\Plus\Support\PackageHandler
+class DevPackageHandler extends \Leven\Support\PackageHandler
 {
     /**
      * The application instance.

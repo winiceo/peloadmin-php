@@ -2,27 +2,13 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Http\Controllers\Admin;
+
+namespace Leven\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Zhiyi\Plus\Http\Controllers\Controller;
-use Zhiyi\Plus\Repository\WalletPingPlusPlus;
+use Leven\Http\Controllers\Controller;
+use Leven\Repository\WalletPingPlusPlus;
 use Illuminate\Contracts\Routing\ResponseFactory as ContractResponse;
 
 class WalletPingPlusPlusController extends Controller
@@ -30,7 +16,7 @@ class WalletPingPlusPlusController extends Controller
     /**
      * Get the Ping++ config.
      *
-     * @param \Zhiyi\Plus\Repository\WalletPingPlusPlus $repository
+     * @param \Leven\Repository\WalletPingPlusPlus $repository
      * @param \Illuminate\Contracts\Routing\ResponseFactory $response
      * @return mixed
      * @author Seven Du <shiweidu@outlook.com>
@@ -46,7 +32,7 @@ class WalletPingPlusPlusController extends Controller
      * Update Ping++ config.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \Zhiyi\Plus\Repository\WalletPingPlusPlus $repository
+     * @param \Leven\Repository\WalletPingPlusPlus $repository
      * @param \Illuminate\Contracts\Routing\ResponseFactory $response
      * @return mixed
      * @author Seven Du <shiweidu@outlook.com>

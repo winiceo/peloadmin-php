@@ -2,29 +2,15 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
+
 
 namespace Zhiyi\Component\ZhiyiPlus\PlusComponentNews\Providers;
 
-use Zhiyi\Plus\Models\User;
+use Leven\Models\User;
 use Illuminate\Support\ServiceProvider;
-use Zhiyi\Plus\Support\ManageRepository;
-use Zhiyi\Plus\Support\BootstrapAPIsEventer;
-use Zhiyi\Plus\Support\PinnedsNotificationEventer;
+use Leven\Support\ManageRepository;
+use Leven\Support\BootstrapAPIsEventer;
+use Leven\Support\PinnedsNotificationEventer;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Zhiyi\Component\ZhiyiPlus\PlusComponentNews\Models\News;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;

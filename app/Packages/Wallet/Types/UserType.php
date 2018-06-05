@@ -2,36 +2,22 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Packages\Wallet\Types;
 
-use Zhiyi\Plus\Packages\Wallet\Order;
-use Zhiyi\Plus\Models\User as UserModel;
-use Zhiyi\Plus\Models\WalletOrder as WalletOrderModel;
-use Zhiyi\Plus\Packages\Wallet\TargetTypes\UserTarget;
+namespace Leven\Packages\Wallet\Types;
+
+use Leven\Packages\Wallet\Order;
+use Leven\Models\User as UserModel;
+use Leven\Models\WalletOrder as WalletOrderModel;
+use Leven\Packages\Wallet\TargetTypes\UserTarget;
 
 class UserType extends Type
 {
     /**
      * User to user transfer.
      *
-     * @param int|\Zhiyi\Plus\Models\User $owner
-     * @param int|\Zhiyi\Plus\Models\User $target
+     * @param int|\Leven\Models\User $owner
+     * @param int|\Leven\Models\User $target
      * @param int $amount
      * @return bool
      * @author Seven Du <shiweidu@outlook.com>
@@ -48,7 +34,7 @@ class UserType extends Type
     /**
      * Resolve get user id.
      *
-     * @param int|\Zhiyi\Plus\Models\User $user
+     * @param int|\Leven\Models\User $user
      * @return int
      * @author Seven Du <shiweidu@outlook.com>
      */
@@ -67,7 +53,7 @@ class UserType extends Type
      * @param int $owner
      * @param int $target
      * @param int $amount
-     * @return \Zhiyi\Plus\Packages\Wallet\Order
+     * @return \Leven\Packages\Wallet\Order
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function createOrder(int $owner, int $target, int $amount): Order

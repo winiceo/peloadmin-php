@@ -2,29 +2,15 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Tests\Feature\API2;
 
-use Zhiyi\Plus\Tests\TestCase;
+namespace Leven\Tests\Feature\API2;
+
+use Leven\Tests\TestCase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Zhiyi\Plus\Models\File as FileModel;
-use Zhiyi\Plus\Models\User as UserModel;
+use Leven\Models\File as FileModel;
+use Leven\Models\User as UserModel;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class FileUploadedTest extends TestCase
@@ -34,7 +20,7 @@ class FileUploadedTest extends TestCase
     /**
      * The test user.
      *
-     * @var Zhiyi\Plus\Models\User
+     * @var Leven\Models\User
      */
     protected $user;
 

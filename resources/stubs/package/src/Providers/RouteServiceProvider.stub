@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace {namespace}\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Zhiyi\Plus\Support\ManageRepository;
+use Leven\Support\ManageRepository;
 
 class RouteServiceProvider extends ServiceProvider
 {

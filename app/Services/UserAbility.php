@@ -2,27 +2,13 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Services;
+
+namespace Leven\Services;
 
 use Illuminate\Support\Collection;
-use Zhiyi\Plus\Models\User as UserModel;
-use Zhiyi\Plus\Contracts\Model\UserAbility as UserAbilityContract;
+use Leven\Models\User as UserModel;
+use Leven\Contracts\Model\UserAbility as UserAbilityContract;
 
 class UserAbility implements UserAbilityContract
 {
@@ -76,7 +62,7 @@ class UserAbility implements UserAbilityContract
     /**
      * Get user instance.
      *
-     * @return \Zhiyi\Plus\Models\User
+     * @return \Leven\Models\User
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function user(): UserModel
@@ -87,7 +73,7 @@ class UserAbility implements UserAbilityContract
     /**
      * Set user model.
      *
-     * @param \Zhiyi\Plus\Models\User $user
+     * @param \Leven\Models\User $user
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setUser(UserModel $user)

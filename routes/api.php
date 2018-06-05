@@ -1,27 +1,12 @@
 <?php
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-use Zhiyi\Plus\EaseMobIm;
+use Leven\EaseMobIm;
 use Illuminate\Support\Facades\Route;
-use Zhiyi\Plus\Http\Controllers\APIs\V2 as API2;
+use Leven\Http\Controllers\Apis\V1 as API2;
 use Illuminate\Contracts\Routing\Registrar as RouteContract;
 
-Route::any('/develop', \Zhiyi\Plus\Http\Controllers\DevelopController::class.'@index');
+Route::any('/develop', \Leven\Http\Controllers\DevelopController::class.'@index');
 
 /*
 |--------------------------------------------------------------------------
@@ -33,18 +18,12 @@ Route::any('/develop', \Zhiyi\Plus\Http\Controllers\DevelopController::class.'@i
 |
 */
 
-Route::group(['prefix' => 'v2'], function (RouteContract $api) {
+Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
-    /*
-    |-----------------------------------------------------------------------
-    | No user authentication required.
-    |-----------------------------------------------------------------------
-    |
-    | Here are some public routes, public routes do not require user
-    | authentication, and if it is an optional authentication route to
-    | obtain the current authentication user, use `$request-> user ('api')`.
-    |
-    */
+
+
+    $api->get('/coin/price', API2\CoinController::class.'@price');
+
 
     $api->post('/pingpp/webhooks', API2\PingPlusPlusChargeWebHooks::class.'@webhook');
 
@@ -235,6 +214,72 @@ Route::group(['prefix' => 'v2'], function (RouteContract $api) {
 
     $api->group(['middleware' => 'auth:api'], function (RouteContract $api) {
 
+
+
+
+        $api->group(['prefix' => 'wallet'], function (RouteContract $api) {
+
+
+            // 获取提现记录
+            $api->get('/cashes', API2\NewWalletCashController::class.'@show');
+
+            // 发起提现申请
+            $api->post('/cashes', API2\NewWalletCashController::class.'@store');
+
+
+            // 发起充值
+            $api->post('/recharge', API2\NewWalletRechargeController::class.'@store');
+
+            // 钱包订单列表
+            $api->get('/orders', API2\NewWalletRechargeController::class.'@list');
+
+            // 取回凭据
+            $api->get('/orders/{order}', API2\NewWalletRechargeController::class.'@retrieve');
+
+            // 转账
+            $api->post('/transfer', API2\TransferController::class.'@transfer');
+
+            // 转换积分
+            $api->post('/transform', API2\NewWalletRechargeController::class.'@transform');
+
+//            /*
+//            | 获取钱包配置信息
+//             */
+//
+//            $api->get('/', API2\WalletConfigController::class.'@show');
+//
+//            /*
+//            | 获取提现记录
+//             */
+//            $api->get('/cashes', API2\WalletCashController::class.'@show');
+//
+//            /*
+//            | 发起提现申请
+//             */
+//
+//            $api->post('/cashes', API2\WalletCashController::class.'@store');
+//
+//            /*
+//            | 充值钱包余额
+//             */
+//
+//            $api->post('/recharge', API2\WalletRechargeController::class.'@store');
+//
+//            /*
+//            | 获取凭据列表
+//             */
+//
+//            $api->get('/charges', API2\WalletChargeController::class.'@list');
+//
+//            /*
+//            | 获取单条凭据
+//             */
+//
+//            $api->get('/charges/{charge}', API2\WalletChargeController::class.'@show');
+        });
+
+
+
         /*
         |--------------------------------------------------------------------
         | Define the current authentication user to operate the route.
@@ -409,68 +454,8 @@ Route::group(['prefix' => 'v2'], function (RouteContract $api) {
         |
         */
 
-        $api->group(['prefix' => 'wallet'], function (RouteContract $api) {
 
-            /*
-            | 获取钱包配置信息
-             */
 
-            $api->get('/', API2\WalletConfigController::class.'@show');
-
-            /*
-            | 获取提现记录
-             */
-            $api->get('/cashes', API2\WalletCashController::class.'@show');
-
-            /*
-            | 发起提现申请
-             */
-
-            $api->post('/cashes', API2\WalletCashController::class.'@store');
-
-            /*
-            | 充值钱包余额
-             */
-
-            $api->post('/recharge', API2\WalletRechargeController::class.'@store');
-
-            /*
-            | 获取凭据列表
-             */
-
-            $api->get('/charges', API2\WalletChargeController::class.'@list');
-
-            /*
-            | 获取单条凭据
-             */
-
-            $api->get('/charges/{charge}', API2\WalletChargeController::class.'@show');
-        });
-
-        // 新版钱包
-        $api->group(['prefix' => 'plus-pay'], function (RouteContract $api) {
-
-            // 获取提现记录
-            $api->get('/cashes', API2\NewWalletCashController::class.'@show');
-
-            // 发起提现申请
-            $api->post('/cashes', API2\NewWalletCashController::class.'@store');
-
-            // 发起充值
-            $api->post('/recharge', API2\NewWalletRechargeController::class.'@store');
-
-            // 钱包订单列表
-            $api->get('/orders', API2\NewWalletRechargeController::class.'@list');
-
-            // 取回凭据
-            $api->get('/orders/{order}', API2\NewWalletRechargeController::class.'@retrieve');
-
-            // 转账
-            $api->post('/transfer', API2\TransferController::class.'@transfer');
-
-            // 转换积分
-            $api->post('/transform', API2\NewWalletRechargeController::class.'@transform');
-        });
 
         /*
         | 检查一个文件的 md5, 如果存在着创建一个 file with id.
@@ -505,51 +490,9 @@ Route::group(['prefix' => 'v2'], function (RouteContract $api) {
             $api->post('/comments/{comment}', API2\ReportController::class.'@comment');
         });
 
-        /*
-        | 环信
-         */
-        $api->group(['prefix' => 'easemob'], function (RouteContract $api) {
 
-            // 注册环信用户(单个)
-            $api->post('register/{user_id}', EaseMobIm\EaseMobController::class.'@createUser')->where(['user_id' => '[0-9]+']);
 
-            //批量注册环信用户
-            $api->post('/register', EaseMobIm\EaseMobController::class.'@createUsers');
-
-            // 为未注册环信用户注册环信（兼容老用户）
-            $api->post('/register-old-users', EaseMobIm\EaseMobController::class.'@registerOldUsers');
-
-            // 重置用户环信密码
-            $api->put('/password', EaseMobIm\EaseMobController::class.'@resetPassword');
-
-            // 获取环信用户密码
-            $api->get('/password', EaseMobIm\EaseMobController::class.'@getPassword');
-
-            // 创建群组
-            $api->post('/group', EaseMobIm\GroupController::class.'@store');
-
-            // 修改群组信息
-            $api->patch('/group', EaseMobIm\GroupController::class.'@update');
-
-            // 删除群组
-            $api->delete('/group', EaseMobIm\GroupController::class.'@delete');
-
-            // 获取指定群组信息
-            $api->get('/group', EaseMobIm\GroupController::class.'@getGroup');
-
-            // 获取群头像
-            $api->get('/group/face', EaseMobIm\GroupController::class.'@getGroupFace');
-
-            // 添加群成员
-            $api->post('/group/member', EaseMobIm\GroupController::class.'@addGroupMembers');
-
-            // 移除群成员
-            $api->delete('/group/member', EaseMobIm\GroupController::class.'@removeGroupMembers');
-
-            // 获取聊天记录Test
-            $api->get('/group/message', EaseMobIm\EaseMobController::class.'@getMessage');
-        });
-
+        // 积分部分
         // 积分部分
         $api->group(['prefix' => 'currency'], function (RouteContract $api) {
 
@@ -581,9 +524,8 @@ Route::group(['prefix' => 'v2'], function (RouteContract $api) {
             $api->get('/apple-iap/products', API2\CurrencyApplePayController::class.'@productList');
 
             // 积分商城（待开发）
-            $api->get('/shop', function () {
-                return view('currency-developing');
-            });
+            $api->view('/show', 'currency-developing');
         });
+
     });
 });

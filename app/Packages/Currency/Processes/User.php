@@ -2,29 +2,15 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Packages\Currency\Processes;
+
+namespace Leven\Packages\Currency\Processes;
 
 use DB;
-use Zhiyi\Plus\Packages\Currency\Order;
-use Zhiyi\Plus\Models\User as UserModel;
-use Zhiyi\Plus\Packages\Currency\Process;
-use Zhiyi\Plus\Models\CurrencyOrder as CurrencyOrderModel;
+use Leven\Packages\Currency\Order;
+use Leven\Models\User as UserModel;
+use Leven\Packages\Currency\Process;
+use Leven\Models\CurrencyOrder as CurrencyOrderModel;
 
 class User extends Process
 {
@@ -147,7 +133,7 @@ class User extends Process
      * @param string $title
      * @param string $body
      * @param int|int $target_id
-     * @return Zhiyi\Plus\Models\CurrencyOrder
+     * @return Leven\Models\CurrencyOrder
      * @author BS <414606094@qq.com>
      */
     public function createOrder(UserModel $user, int $amount, int $type, string $title = '', string $body = '', int $target_id = 0): CurrencyOrderModel

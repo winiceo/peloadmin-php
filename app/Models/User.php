@@ -2,30 +2,16 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Models;
+
+namespace Leven\Models;
 
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Zhiyi\Plus\Http\Controllers\APIs\V2\UserAvatarController;
+use Leven\Http\Controllers\Apis\V1\UserAvatarController;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -36,6 +22,7 @@ class User extends Authenticatable implements JWTSubject
         Concerns\UserHasAbility,
         Concerns\UserHasNotifiable,
         Concerns\Macroable;
+
     // 关系数据相关
     use Relations\UserHasWallet,
         Relations\UserHasWalletCash,
@@ -48,6 +35,7 @@ class User extends Authenticatable implements JWTSubject
         Relations\UserHasLike,
         Relations\UserHasCurrency,
         Relations\UserHasNewWallet;
+
 
     /**
      * The attributes that are mass assignable.

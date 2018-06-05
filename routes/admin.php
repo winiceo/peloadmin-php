@@ -1,20 +1,6 @@
 <?php
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
+
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Contracts\Routing\Registrar as RouteRegisterContract;
@@ -165,7 +151,68 @@ Route::middleware('auth:web')
 ->middleware('admin')
 ->group(function () {
 
-    // 钱包
+
+    /**
+     * 刷卡流水
+     */
+    Route::prefix('bills')->group(function () {
+        Route::get('', 'BillController@index');
+
+    });
+    /**
+     * 币种管理
+     */
+    Route::prefix('coins')->group(function () {
+        Route::get('', 'CoinController@index');
+
+    });
+    Route::prefix('site/coins')->group(function () {
+        // 标签列表(带分页)
+        Route::get('/', 'CoinController@lists');
+        Route::get('/{coin}', 'CoinController@coin')
+            ->where('coin', '[0-9]+');
+
+
+        // 添加标签
+        Route::post('/', 'CoinController@store');
+
+        Route::post('/tag_categories', 'CoinController@storeCate');
+
+        Route::patch('/tag_categories/{cate}', 'CoinController@updateCate');
+
+        Route::patch('/{coin}', 'CoinController@update')
+            ->where('coin', '[0-9]+');
+
+        Route::delete('/{coin}', 'CoinController@delete');
+
+        Route::delete('/tag_categories/{cate}', 'CoinController@deleteCategory');
+    });
+
+    /* ------------- 资产管理 -----------------*/
+    Route::prefix('/asset')->group(function () {
+        Route::get('/', 'AssetController@index');
+        Route::post('/add', 'AssetController@add');
+        Route::get('/config', 'AssetController@showConfig');
+        Route::patch('/config', 'AssetController@updateConfig');
+
+        Route::get('/list', 'AssetController@list');
+        Route::get('/overview', 'AssetController@overview');
+
+        Route::prefix('/cash')->group(function () {
+            Route::get('', 'CurrencyCashController@list');
+            Route::patch('/{order}/audit', 'CurrencyCashController@audit');
+        });
+
+        Route::prefix('/apple')->group(function () {
+            Route::get('/config', 'CurrencyAppleController@getConfig');
+            Route::patch('/config', 'CurrencyAppleController@setConfig');
+
+            Route::get('/products', 'CurrencyAppleController@getProducts');
+            Route::post('/products', 'CurrencyAppleController@addProduct');
+            Route::delete('/products', 'CurrencyAppleController@delProduct');
+        });
+    });
+
     Route::prefix('wallet')->group(function () {
         // 充值选项
         Route::get('/labels', 'WalletLabelController@labels');
@@ -206,6 +253,10 @@ Route::middleware('auth:web')
         // 钱包开关
         Route::get('/switch', 'WalletSwitchController@show');
         Route::patch('/switch', 'WalletSwitchController@update');
+
+        // 原生支付配置设置
+        Route::get('/newPaySetting', 'NewPaySettingController@index');
+        Route::post('/newPaySetting', 'NewPaySettingController@store');
     });
 
     // SMS 相关
@@ -357,10 +408,6 @@ Route::middleware('auth:web')
 
     Route::get('rewards/export', 'RewardController@export');
 
-    /* ------------- 举报管理 -----------------*/
-    Route::get('reports', 'ReportController@index');
-    Route::patch('reports/{report}/deal', 'ReportController@deal');
-    Route::patch('reports/{report}/reject', 'ReportController@reject');
 
     /*-------------- 辅助功能 -----------------*/
     Route::prefix('/auxiliary')->group(function () {

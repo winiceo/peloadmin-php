@@ -2,29 +2,15 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Http\Requests\API2;
+
+namespace Leven\Http\Requests\API2;
 
 use Illuminate\Validation\Rule;
-use Zhiyi\Plus\Packages\Wallet\Wallet;
+use Leven\Packages\Wallet\Wallet;
 use Illuminate\Foundation\Http\FormRequest;
-use Zhiyi\Plus\Repository\UserWalletCashType;
-use Zhiyi\Plus\Repository\WalletCashMinAmount as CashMinAmountRepository;
+use Leven\Repository\UserWalletCashType;
+use Leven\Repository\WalletCashMinAmount as CashMinAmountRepository;
 
 class NewStoreUserWallerCashPost extends FormRequest
 {
@@ -45,20 +31,18 @@ class NewStoreUserWallerCashPost extends FormRequest
      */
     public function rules(UserWalletCashType $typeRepository, CashMinAmountRepository $minAmountRepository)
     {
-        $wallet = new Wallet($this->user());
+         $wallet = new Wallet($this->user());
+
 
         return [
-            'value' => [
-                'required',
-                'numeric',
-                'min:'.$minAmountRepository->get(),
-                'max:'.$wallet->getWalletModel()->balance,
-            ],
-            'type' => [
-                'required',
-                Rule::in($typeRepository->get()),
-            ],
-            'account' => ['required'],
+//            'amount' => [
+//                'required',
+//                'numeric',
+//                'min:'.$minAmountRepository->get(),
+//                'max:'.$wallet->getWalletModel()->balance,
+//            ],
+
+            'address' => ['required'],
         ];
     }
 

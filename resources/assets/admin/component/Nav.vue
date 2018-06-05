@@ -51,22 +51,32 @@
 
 <template>
   <div class="list-group app-nav">
-    <router-link class="list-group-item __button" to="/setting" active-class="active" >
-      <span class="glyphicon glyphicon-cog __icon"></span>
-      系统设置
+
+
+    <router-link class="list-group-item __button" to="/assets" active-class="active">
+      <span class="glyphicon glyphicon-asterisk __icon"></span>
+      资产管理
     </router-link>
-    <router-link class="list-group-item __button" to="/currency" active-class="active">
-        <span class="glyphicon glyphicon-asterisk __icon"></span>
-        积分设置
+    <router-link class="list-group-item __button" to="/bills" active-class="active" >
+      <span class="glyphicon glyphicon-user __icon"></span>
+      刷卡流水
     </router-link>
+
     <router-link class="list-group-item __button" to="/users" active-class="active" >
       <span class="glyphicon glyphicon-user __icon"></span>
       用户中心
     </router-link>
-    <router-link class="list-group-item __button" to="/reports" active-class="active" >
-      <span class="glyphicon glyphicon-user __icon"></span>
-      举报管理
+
+    <router-link class="list-group-item __button" to="/setting" active-class="active" >
+      <span class="glyphicon glyphicon-cog __icon"></span>
+      系统设置
     </router-link>
+
+
+    <!--<router-link class="list-group-item __button" to="/reports" active-class="active" >-->
+      <!--<span class="glyphicon glyphicon-user __icon"></span>-->
+      <!--举报管理-->
+    <!--</router-link>-->
     <router-link class="list-group-item __button" to="/captcha" active-class="active" >
       <span class="glyphicon glyphicon-phone __icon"></span>
       验证设置
@@ -83,24 +93,13 @@
       <span class="__icon">AD</span>
       广告管理
     </router-link>
-    <router-link class="list-group-item __button" to="/certifications" active-class="active" >
-      <span class="__icon">CE</span>
-      认证管理
-    </router-link>
-    <router-link class="list-group-item __button" to="/conversations" active-class="active" >
-      <span class="__icon">CO</span>
-      会话管理
-    </router-link>
-    <router-link class="list-group-item __button" to="/reward" active-class="active" >
-      <span class="__icon">DS</span>
-      打赏管理
-    </router-link>
 
-    <!-- CDN -->
-    <router-link class="list-group-item __button" to="/cdn" active-class="active">
-        <span class="glyphicon glyphicon-cloud __icon"></span>
-        CDN管理
-    </router-link>
+    <!--<router-link class="list-group-item __button" to="/reward" active-class="active" >-->
+      <!--<span class="__icon">DS</span>-->
+      <!--打赏管理-->
+    <!--</router-link>-->
+
+
 
     <!-- 拓展包导航加载 -->
     <router-link class="list-group-item __button" v-for="item, index in manages" :key="index" :to="`/package/${index}`" active-class="active" exact>

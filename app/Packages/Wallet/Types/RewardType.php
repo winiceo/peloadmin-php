@@ -2,28 +2,14 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Packages\Wallet\Types;
 
-use Zhiyi\Plus\Models\User;
-use Zhiyi\Plus\Packages\Wallet\Order;
-use Zhiyi\Plus\Models\WalletOrder as WalletOrderModel;
-use Zhiyi\Plus\Packages\Wallet\TargetTypes\RewardTarget;
+namespace Leven\Packages\Wallet\Types;
+
+use Leven\Models\User;
+use Leven\Packages\Wallet\Order;
+use Leven\Models\WalletOrder as WalletOrderModel;
+use Leven\Packages\Wallet\TargetTypes\RewardTarget;
 
 class RewardType extends Type
 {
@@ -76,7 +62,7 @@ class RewardType extends Type
      * @param int $owner
      * @param int $target
      * @param int $amount
-     * @return \Zhiyi\Plus\Packages\Wallet\Order
+     * @return \Leven\Packages\Wallet\Order
      * @author hh <915664508@qq.com>
      */
     public function createOrder(int $owner, int $target, int $amount, string $body): Order

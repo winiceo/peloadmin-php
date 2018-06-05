@@ -2,28 +2,14 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Http\Requests\API2;
+
+namespace Leven\Http\Requests\API2;
 
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
-use Zhiyi\Plus\Repository\UserWalletCashType;
-use Zhiyi\Plus\Repository\WalletCashMinAmount as CashMinAmountRepository;
+use Leven\Repository\UserWalletCashType;
+use Leven\Repository\WalletCashMinAmount as CashMinAmountRepository;
 
 class StoreUserWallerCashPost extends FormRequest
 {
@@ -42,20 +28,17 @@ class StoreUserWallerCashPost extends FormRequest
      *
      * @return array
      */
-    public function rules(UserWalletCashType $typeRepository, CashMinAmountRepository $minAmountRepository)
+    public function rules( CashMinAmountRepository $minAmountRepository)
     {
         return [
-            'value' => [
+            'amount' => [
                 'required',
                 'numeric',
                 'min:'.$minAmountRepository->get(),
                 'max:'.$this->user()->wallet->balance,
             ],
-            'type' => [
-                'required',
-                Rule::in($typeRepository->get()),
-            ],
-            'account' => ['required'],
+
+            'address' => ['required'],
         ];
     }
 

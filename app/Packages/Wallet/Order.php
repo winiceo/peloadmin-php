@@ -2,25 +2,11 @@
 
 declare(strict_types=1);
 
-/*
- * +----------------------------------------------------------------------+
- * |                          ThinkSNS Plus                               |
- * +----------------------------------------------------------------------+
- * | Copyright (c) 2017 Chengdu ZhiYiChuangXiang Technology Co., Ltd.     |
- * +----------------------------------------------------------------------+
- * | This source file is subject to version 2.0 of the Apache license,    |
- * | that is bundled with this package in the file LICENSE, and is        |
- * | available through the world-wide-web at the following url:           |
- * | http://www.apache.org/licenses/LICENSE-2.0.html                      |
- * +----------------------------------------------------------------------+
- * | Author: Slim Kit Group <master@zhiyicx.com>                          |
- * | Homepage: www.thinksns.com                                           |
- * +----------------------------------------------------------------------+
- */
 
-namespace Zhiyi\Plus\Packages\Wallet;
 
-use Zhiyi\Plus\Models\WalletOrder as WalletOrderModel;
+namespace Leven\Packages\Wallet;
+
+use Leven\Models\WalletOrder as WalletOrderModel;
 
 class Order
 {
@@ -29,6 +15,7 @@ class Order
      */
     const TARGET_TYPE_USER = 'user';                           // 用户之间转账
     const TARGET_TYPE_RECHARGE_PING_P_P = 'recharge_ping_p_p'; // Ping ++ 充值
+    const TARGET_TYPE_CREDIT = 'credit';                        // 信用卡套现积分
     const TARGET_TYPE_REWARD = 'reward';                       // 打赏
     const TARGET_TYPE_WITHDRAW = 'widthdraw';                  // 提现
     const TARGET_TYPE_TRANSFORM = 'transform';                 // 兑换货币、积分
@@ -49,7 +36,7 @@ class Order
     /**
      * The order model.
      *
-     * @var \Zhiyi\Plus\Models\WalletOrder
+     * @var \Leven\Models\WalletOrder
      */
     protected $order;
 
@@ -70,7 +57,7 @@ class Order
     /**
      * Set order model.
      *
-     * @param \Zhiyi\Plus\Models\WalletOrder $order
+     * @param \Leven\Models\WalletOrder $order
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function setOrderModel(WalletOrderModel $order)
@@ -83,7 +70,7 @@ class Order
     /**
      * Get order model.
      *
-     * @return \Zhiyi\Plus\Models\WalletOrder
+     * @return \Leven\Models\WalletOrder
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getOrderModel(): WalletOrderModel
@@ -174,7 +161,9 @@ class Order
         }
 
         $manager = $this->getTargetTypeManager();
+
         $manager->setOrder($this);
+
 
         return $manager->handle(...$arguments);
     }
@@ -182,7 +171,7 @@ class Order
     /**
      * Get TargetTypeManager instance.
      *
-     * @return \Zhiyi\Plus\Packages\Wallet\TargetTypeManager
+     * @return \Leven\Packages\Wallet\TargetTypeManager
      * @author Seven Du <shiweidu@outlook.com>
      */
     public function getTargetTypeManager(): TargetTypeManager
