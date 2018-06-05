@@ -1,14 +1,14 @@
 <template>
     <div id="file_upload">
         <div class="upload-list__item is-success" v-if="imgId">
-            <img :src="`/api/v2/files/${imgId}`" class="upload-list__item-thumbnail">
+            <img :src="`/api/v1/files/${imgId}`" class="upload-list__item-thumbnail">
             <label class="upload-list__item-status-label">
                 <i class="glyphicon glyphicon-ok"></i>
             </label>
             <div class="upload-list__item-actions">
                 <span class="upload-list__item-preview">
                     <!--查看图片-->
-                    <a :href="`/api/v2/files/${imgId}`" target="_blank" title="预览">
+                    <a :href="`/api/v1/files/${imgId}`" target="_blank" title="预览">
                       <i class="glyphicon glyphicon-eye-open"></i>
                     </a>
                   </span>

@@ -44,7 +44,7 @@ class CollectNewsTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/news/{$this->news->id}/collections");
+            ->json('POST', "/api/v1/news/{$this->news->id}/collections");
         $response
             ->assertStatus(201);
     }
@@ -60,7 +60,7 @@ class CollectNewsTest extends TestCase
 
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/news/collections');
+            ->json('GET', '/api/v1/news/collections');
         $response
             ->assertStatus(200)
             ->assertJsonStructure([]);
@@ -77,7 +77,7 @@ class CollectNewsTest extends TestCase
 
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('delete', "/api/v2/news/{$this->news->id}/collections");
+            ->json('delete', "/api/v1/news/{$this->news->id}/collections");
 
         $response
             ->assertStatus(204);

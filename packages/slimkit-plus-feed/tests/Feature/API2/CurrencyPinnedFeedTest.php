@@ -39,7 +39,7 @@ class CurrencyPinnedFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/feeds/{$this->feed->id}/currency-pinneds");
+            ->json('POST', "/api/v1/feeds/{$this->feed->id}/currency-pinneds");
         $response
             ->assertStatus(422);
     }
@@ -53,7 +53,7 @@ class CurrencyPinnedFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/feeds/{$this->feed->id}/currency-pinneds", [
+            ->json('POST', "/api/v1/feeds/{$this->feed->id}/currency-pinneds", [
                 'amount' => 1000,
                 'day' => 10,
             ]);
@@ -75,7 +75,7 @@ class CurrencyPinnedFeedTest extends TestCase
 
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/feeds/{$this->feed->id}/currency-pinneds", [
+            ->json('POST', "/api/v1/feeds/{$this->feed->id}/currency-pinneds", [
                 'amount' => 1000,
                 'day' => 10,
             ]);

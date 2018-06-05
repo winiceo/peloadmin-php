@@ -23,8 +23,8 @@
                     <td>{{ news.user ? `${news.user.name} #${news.user_id}` : `$#{news.user_id}` }}</td>
                     <td class="td-thumbnail">
                         <template>
-                            <a class="thumbnail" v-if='news.image' :href='"/api/v2/files/" + news.image.id' target="_blank">
-                                <img :src='"/api/v2/files/" + news.image.id' class="small_img" :alt="news.image.id">
+                            <a class="thumbnail" v-if='news.image' :href='"/api/v1/files/" + news.image.id' target="_blank">
+                                <img :src='"/api/v1/files/" + news.image.id' class="small_img" :alt="news.image.id">
                             </a>
                             <span v-else>暂无缩略图</span>
                         </template>

@@ -38,7 +38,7 @@ class GetFeedTest extends TestCase
     public function testGetFeeds()
     {
         $response = $this->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/feeds');
+            ->json('GET', '/api/v1/feeds');
         $response
             ->assertStatus(200)
             ->assertJsonStructure(['ad', 'pinned', 'feeds']);
@@ -52,7 +52,7 @@ class GetFeedTest extends TestCase
     public function testGetFeed()
     {
         $response = $this->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/feeds/'.$this->feed->id);
+            ->json('GET', '/api/v1/feeds/'.$this->feed->id);
         $response
             ->assertStatus(200);
     }
@@ -62,7 +62,7 @@ class GetFeedTest extends TestCase
      */
     public function testNotAuthGetFeeds()
     {
-        $response = $this->json('GET', '/api/v2/feeds');
+        $response = $this->json('GET', '/api/v1/feeds');
         $response
             ->assertStatus(200)
             ->assertJsonStructure(['ad', 'pinned', 'feeds']);
@@ -75,7 +75,7 @@ class GetFeedTest extends TestCase
      */
     public function testNotAuthGetFeed()
     {
-        $response = $this->json('GET', '/api/v2/feeds/'.$this->feed->id);
+        $response = $this->json('GET', '/api/v1/feeds/'.$this->feed->id);
         $response
             ->assertStatus(200);
     }

@@ -26,7 +26,7 @@ class HomeController extends Controller
         $data = [
             'csrf_token' => csrf_token(),
             'base_url'   => url('admin'),
-            'api'        => url('api/v2'),
+            'api'        => url('api/v1'),
             'logged'     => (bool) $user,
             'user'       => $user,
             'token' => JWTAuth::fromUser($user),

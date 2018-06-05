@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 
-
 namespace Leven\Packages\Wallet\TargetTypes;
 
 use DB;
@@ -28,22 +27,23 @@ class CreditTarget extends Target
     {
 
 
-        if (! $this->order->hasWait()) {
+        if (!$this->order->hasWait()) {
             return true;
         }
 
+
         $this->initWallet();
 
-       $this->createTargetCreditOrder( );
+        $this->createTargetCreditOrder();
 
-        $transaction = function ()  {
+        $transaction = function () {
             $this->order->saveStateSuccess();
             //$this->targetCreditOrder->saveStateSuccess();
-           $this->transfer($this->order, $this->ownerWallet);
-           // $this->transfer($this->targetCreditOrder, $this->targetWallet);
+            $this->transfer($this->order, $this->ownerWallet);
+            // $this->transfer($this->targetCreditOrder, $this->targetWallet);
 
             // 记录打赏记录
-           // $this->createCreditRecord($extra['reward_resource'], $this->order);
+            // $this->createCreditRecord($extra['reward_resource'], $this->order);
 
             return true;
         };
@@ -101,7 +101,8 @@ class CreditTarget extends Target
 
         // owner wallet.
         $this->ownerWallet = new Wallet(
-            $this->order->getOrderModel()->owner_id
+            $this->order->getOrderModel()->owner_id,
+            $this->order->getOrderModel()->coin_id
         );
     }
 

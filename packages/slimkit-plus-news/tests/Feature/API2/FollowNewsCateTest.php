@@ -27,7 +27,7 @@ class FollowNewsCateTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('patch', '/api/v2/news/categories/follows', ['follows' => $cates->pluck('id')->implode(',')]);
+            ->json('patch', '/api/v1/news/categories/follows', ['follows' => $cates->pluck('id')->implode(',')]);
         $response
             ->assertStatus(201)
             ->assertJsonStructure(['message']);

@@ -59,7 +59,7 @@ class CurrencyPinnedFeedCommentTest extends TestCase
 
         $response = $this
             ->actingAs($this->other, 'api')
-            ->json('POST', "/api/v2/feeds/{$this->feed->id}/comments/{$this->comment->id}/currency-pinneds", [
+            ->json('POST', "/api/v1/feeds/{$this->feed->id}/comments/{$this->comment->id}/currency-pinneds", [
                 'amount' => 100,
                 'day' => 1,
             ]);

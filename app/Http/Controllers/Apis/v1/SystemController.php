@@ -9,6 +9,7 @@ namespace Leven\Http\Controllers\Apis\V1;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Leven\Models\Conversation;
+use Zhiyi\Component\ZhiyiPlus\PlusComponentNews\Models\News;
 
 class SystemController extends Controller
 {
@@ -46,6 +47,16 @@ class SystemController extends Controller
         }
 
         return view('about');
+    }
+
+    //新闻页面
+    public function html(int $id )
+    {
+
+        $news=News::find($id)->toArray();
+
+
+        return view('news',compact('news'));
     }
 
     /**

@@ -44,7 +44,7 @@ class LikeNewsTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/news/{$this->news->id}/likes");
+            ->json('POST', "/api/v1/news/{$this->news->id}/likes");
         $response
             ->assertStatus(201);
     }
@@ -60,7 +60,7 @@ class LikeNewsTest extends TestCase
 
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('DELETE', "/api/v2/news/{$this->news->id}/likes");
+            ->json('DELETE', "/api/v1/news/{$this->news->id}/likes");
         $response
             ->assertStatus(204);
     }

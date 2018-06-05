@@ -45,7 +45,7 @@ class RewardNewsTest extends TestCase
         $this->user->wallet()->increment('balance', 100);
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/news/{$this->news->id}/rewards", [
+            ->json('POST', "/api/v1/news/{$this->news->id}/rewards", [
                 'amount' => 100,
             ]);
         $response
@@ -70,7 +70,7 @@ class RewardNewsTest extends TestCase
 
         $response = $this
             ->actingAs($other, 'api')
-            ->json('POST', "/api/v2/news/{$this->news->id}/new-rewards", [
+            ->json('POST', "/api/v1/news/{$this->news->id}/new-rewards", [
                 'amount' => 100,
             ]);
         $response
@@ -86,7 +86,7 @@ class RewardNewsTest extends TestCase
     public function testGetNewsRewards()
     {
         $response = $this
-            ->json('GET', "/api/v2/news/{$this->news->id}/rewards");
+            ->json('GET', "/api/v1/news/{$this->news->id}/rewards");
         $response
             ->assertStatus(200);
     }
@@ -99,7 +99,7 @@ class RewardNewsTest extends TestCase
     public function testNewsRewardCount()
     {
         $response = $this
-            ->json('GET', "/api/v2/news/{$this->news->id}/rewards/sum");
+            ->json('GET', "/api/v1/news/{$this->news->id}/rewards/sum");
         $response
             ->assertStatus(200)
             ->assertJsonStructure(['count', 'amount']);

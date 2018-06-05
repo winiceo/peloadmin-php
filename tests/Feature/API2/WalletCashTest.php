@@ -40,7 +40,7 @@ class WalletCashTest extends TestCase
      */
     public function testGetCashes()
     {
-        $firstrResponse = $this->actingAs($this->user, 'api')->json('GET', '/api/v2/plus-pay/cashes?limit=1');
+        $firstrResponse = $this->actingAs($this->user, 'api')->json('GET', '/api/v1/plus-pay/cashes?limit=1');
 
         $firstrResponse->assertStatus(200);
 
@@ -49,7 +49,7 @@ class WalletCashTest extends TestCase
 
         $this->assertOrderData($data);
 
-        $after = $this->actingAs($this->user, 'api')->json('GET', '/api/v2/plus-pay/cashes?after='.$data['id']);
+        $after = $this->actingAs($this->user, 'api')->json('GET', '/api/v1/plus-pay/cashes?after='.$data['id']);
 
         $after->assertStatus(200);
 
@@ -68,7 +68,7 @@ class WalletCashTest extends TestCase
      */
     public function testCreateCash()
     {
-        $response = $this->actingAs($this->user, 'api')->json('post', '/api/v2/plus-pay/cashes', [
+        $response = $this->actingAs($this->user, 'api')->json('post', '/api/v1/plus-pay/cashes', [
             'value' => 1234,
             'type' => 'alipay',
             'account' => 'asas@aaa.com',

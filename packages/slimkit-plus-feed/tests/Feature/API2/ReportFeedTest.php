@@ -51,7 +51,7 @@ class ReportFeedTest extends TestCase
     protected function addFeed($user)
     {
         $response = $this->actingAs($user, 'api')
-            ->json('POST', '/api/v2/feeds', [
+            ->json('POST', '/api/v1/feeds', [
                 'feed_content' => 'test',
                 'feed_from' => 5,
                 'feed_mark' => intval(time().rand(1000, 9999)),
@@ -73,7 +73,7 @@ class ReportFeedTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('POST', "/api/v2/feeds/{$feed}/reports", ['reason' => '测试']);
+            ->json('POST', "/api/v1/feeds/{$feed}/reports", ['reason' => '测试']);
         $response
             ->assertStatus(201)
             ->assertJsonStructure(['message']);

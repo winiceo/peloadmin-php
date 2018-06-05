@@ -50,7 +50,7 @@ class NotificationsTest extends TestCase
     {
         $token = $this->guard()->login($this->user);
 
-        $response = $this->getJson('/api/v2/user/notifications', [
+        $response = $this->getJson('/api/v1/user/notifications', [
             'Authorization' => 'Bearer '.$token,
         ]);
 
@@ -73,7 +73,7 @@ class NotificationsTest extends TestCase
     {
         $token = $this->guard()->login($this->user);
 
-        $getNotification = $this->getJson('/api/v2/user/notifications', [
+        $getNotification = $this->getJson('/api/v1/user/notifications', [
             'Authorization' => 'Bearer '.$token,
         ]);
 
@@ -82,7 +82,7 @@ class NotificationsTest extends TestCase
         // 未读时read_at为null
         $this->assertNull($single['read_at']);
 
-        $response = $this->getJson('/api/v2/user/notifications/'.$single['id'], [
+        $response = $this->getJson('/api/v1/user/notifications/'.$single['id'], [
             'Authorization' => 'Bearer '.$token,
         ]);
 
@@ -102,7 +102,7 @@ class NotificationsTest extends TestCase
     {
         $token = $this->guard()->login($this->user);
 
-        $getNotification = $this->getJson('/api/v2/user/notifications', [
+        $getNotification = $this->getJson('/api/v1/user/notifications', [
             'Authorization' => 'Bearer '.$token,
         ]);
 
@@ -111,13 +111,13 @@ class NotificationsTest extends TestCase
             $this->assertNull($single['read_at']);
         });
 
-        $markResponse = $this->patch('/api/v2/user/notifications?notification='.$notifications[0]['id'], [
+        $markResponse = $this->patch('/api/v1/user/notifications?notification='.$notifications[0]['id'], [
             'Authorization' => 'Bearer '.$token,
         ]);
 
         $markResponse->assertStatus(201);
 
-        $finalResponse = $this->getJson('/api/v2/user/notifications', [
+        $finalResponse = $this->getJson('/api/v1/user/notifications', [
             'Authorization' => 'Bearer '.$token,
         ]);
 
@@ -135,7 +135,7 @@ class NotificationsTest extends TestCase
     {
         $token = $this->guard()->login($this->user);
 
-        $getNotification = $this->getJson('/api/v2/user/notifications', [
+        $getNotification = $this->getJson('/api/v1/user/notifications', [
             'Authorization' => 'Bearer '.$token,
         ]);
 
@@ -144,13 +144,13 @@ class NotificationsTest extends TestCase
             $this->assertNull($single['read_at']);
         });
 
-        $markResponse = $this->patch('/api/v2/user/notifications?notification='.$notifications[0]['id'].','.$notifications[1]['id'], [
+        $markResponse = $this->patch('/api/v1/user/notifications?notification='.$notifications[0]['id'].','.$notifications[1]['id'], [
             'Authorization' => 'Bearer '.$token,
         ]);
 
         $markResponse->assertStatus(201);
 
-        $finalResponse = $this->getJson('/api/v2/user/notifications', [
+        $finalResponse = $this->getJson('/api/v1/user/notifications', [
             'Authorization' => 'Bearer '.$token,
         ]);
 
@@ -168,7 +168,7 @@ class NotificationsTest extends TestCase
     {
         $token = $this->guard()->login($this->user);
 
-        $getNotification = $this->getJson('/api/v2/user/notifications', [
+        $getNotification = $this->getJson('/api/v1/user/notifications', [
             'Authorization' => 'Bearer '.$token,
         ]);
 
@@ -177,13 +177,13 @@ class NotificationsTest extends TestCase
             $this->assertNull($single['read_at']);
         });
 
-        $markResponse = $this->put('/api/v2/user/notifications/all', [
+        $markResponse = $this->put('/api/v1/user/notifications/all', [
             'Authorization' => 'Bearer '.$token,
         ]);
 
         $markResponse->assertStatus(201);
 
-        $finalResponse = $this->getJson('/api/v2/user/notifications', [
+        $finalResponse = $this->getJson('/api/v1/user/notifications', [
             'Authorization' => 'Bearer '.$token,
         ]);
 

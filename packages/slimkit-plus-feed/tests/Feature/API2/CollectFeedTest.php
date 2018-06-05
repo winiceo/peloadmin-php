@@ -39,7 +39,7 @@ class CollectFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/feeds/{$this->feed->id}/collections");
+            ->json('POST', "/api/v1/feeds/{$this->feed->id}/collections");
 
         $response
             ->assertStatus(201)
@@ -55,7 +55,7 @@ class CollectFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/feeds/collections');
+            ->json('GET', '/api/v1/feeds/collections');
 
         $response
             ->assertStatus(200);
@@ -70,7 +70,7 @@ class CollectFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('DELETE', "/api/v2/feeds/{$this->feed->id}/uncollect");
+            ->json('DELETE', "/api/v1/feeds/{$this->feed->id}/uncollect");
 
         $response
             ->assertStatus(204);

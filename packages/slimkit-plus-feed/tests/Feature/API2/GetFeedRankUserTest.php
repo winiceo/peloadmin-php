@@ -18,7 +18,7 @@ class GetFeedRankUserTest extends TestCase
     public function testGetFeedRankUser()
     {
         $response = $this
-            ->json('GET', '/api/v2/feeds/ranks');
+            ->json('GET', '/api/v1/feeds/ranks');
         $response
             ->assertStatus(200)
             ->assertJsonStructure([]);

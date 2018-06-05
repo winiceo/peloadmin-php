@@ -21,11 +21,11 @@ class RegisterVerifyCodeTest extends TestCase
      */
     public function testGetVerifyCode()
     {
-        $registerByPhone = $this->json('POST', 'api/v2/verifycodes/register', [
+        $registerByPhone = $this->json('POST', 'api/v1/verifycodes/register', [
             'phone' => '13730111234',
         ]);
 
-        $registerByEmail = $this->json('POST', 'api/v2/verifycodes/register', [
+        $registerByEmail = $this->json('POST', 'api/v1/verifycodes/register', [
             'email' => 'aaa@bbb.com',
         ]);
 

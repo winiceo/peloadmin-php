@@ -50,7 +50,7 @@ export default {
                 imgSrc: null
             }
             if (this.imgs || this.up_imgs) {
-                let imgSrc = this.imgs ? ('/api/v2/files/' + this.imgs) : (this.up_imgs);
+                let imgSrc = this.imgs ? ('/api/v1/files/' + this.imgs) : (this.up_imgs);
                 r.showImg = true;
                 r.imgSrc = imgSrc;
             }

@@ -44,7 +44,7 @@ class GetNewsListTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/news');
+            ->json('GET', '/api/v1/news');
         $response
             ->assertStatus(200);
     }
@@ -58,7 +58,7 @@ class GetNewsListTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/news?key=test');
+            ->json('GET', '/api/v1/news?key=test');
         $response
             ->assertStatus(200)
             ->assertJsonCount(10);
@@ -73,7 +73,7 @@ class GetNewsListTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/news?cate_id='.$this->cate->id);
+            ->json('GET', '/api/v1/news?cate_id='.$this->cate->id);
         $response
             ->assertStatus(200)
             ->assertJsonCount(10);
@@ -88,7 +88,7 @@ class GetNewsListTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/news?recommend=1');
+            ->json('GET', '/api/v1/news?recommend=1');
         $response
             ->assertStatus(200)
             ->assertJsonCount(0);
@@ -105,7 +105,7 @@ class GetNewsListTest extends TestCase
 
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', "/api/v2/news/{$id}/correlations");
+            ->json('GET', "/api/v1/news/{$id}/correlations");
         $response
             ->assertStatus(200);
     }

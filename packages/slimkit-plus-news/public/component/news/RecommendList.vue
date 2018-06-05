@@ -27,8 +27,8 @@
                     <tbody>
                         <tr v-for="rec in recommendList" :key="rec.id">
                             <td width='30%'>
-                                <a v-if='rec.cover' :href='"/api/v2/filesChange/" + rec.cover.id' target="_blank">
-                                    <img :src='"/api/v2/files/" + rec.cover.id' class="big_img" :alt="rec.cover.id">
+                                <a v-if='rec.cover' :href='"/api/v1/filesChange/" + rec.cover.id' target="_blank">
+                                    <img :src='"/api/v1/files/" + rec.cover.id' class="big_img" :alt="rec.cover.id">
                                 </a>
                                 <span v-else>暂无Banner图</span>
                             </td>

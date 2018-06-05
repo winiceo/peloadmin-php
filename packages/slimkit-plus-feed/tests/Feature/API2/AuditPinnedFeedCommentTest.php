@@ -67,7 +67,7 @@ class AuditPinnedFeedCommentTest extends TestCase
            ->actingAs($this->owner, 'api')
            ->json(
                'PATCH',
-               "/api/v2/feeds/{$this->feed->id}/comments/{$this->comment->id}/currency-pinneds/{$this->pinned->id}");
+               "/api/v1/feeds/{$this->feed->id}/comments/{$this->comment->id}/currency-pinneds/{$this->pinned->id}");
         $response
            ->assertStatus(201)
            ->assertJsonStructure(['message']);
@@ -84,7 +84,7 @@ class AuditPinnedFeedCommentTest extends TestCase
             ->actingAs($this->owner, 'api')
             ->json(
                 'DELETE',
-                "/api/v2/user/feed-comment-currency-pinneds/{$this->pinned->id}");
+                "/api/v1/user/feed-comment-currency-pinneds/{$this->pinned->id}");
         $response
             ->assertStatus(204);
     }

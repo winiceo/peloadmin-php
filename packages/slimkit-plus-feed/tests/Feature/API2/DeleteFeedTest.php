@@ -39,7 +39,7 @@ class DeleteFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('DELETE', '/api/v2/feeds/'.$this->feed->id);
+            ->json('DELETE', '/api/v1/feeds/'.$this->feed->id);
         $response
             ->assertStatus(204);
     }
@@ -53,7 +53,7 @@ class DeleteFeedTest extends TestCase
     {
         $response = $this
             ->actingAs(factory(UserModel::class)->create(), 'api')
-            ->json('DELETE', '/api/v2/feeds/'.$this->feed->id);
+            ->json('DELETE', '/api/v1/feeds/'.$this->feed->id);
         $response
             ->assertStatus(403);
     }
@@ -67,7 +67,7 @@ class DeleteFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('DELETE', '/api/v2/feeds/0');
+            ->json('DELETE', '/api/v1/feeds/0');
         $response
             ->assertStatus(404);
     }
@@ -81,7 +81,7 @@ class DeleteFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('DELETE', "/api/v2/feeds/{$this->feed->id}/currency");
+            ->json('DELETE', "/api/v1/feeds/{$this->feed->id}/currency");
         $response
             ->assertStatus(204);
     }

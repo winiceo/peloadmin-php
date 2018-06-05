@@ -45,7 +45,7 @@ class CommentNewsTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/news/{$this->news->id}/comments", [
+            ->json('POST', "/api/v1/news/{$this->news->id}/comments", [
                 'body' => 'test',
                 'reply_user' => 0,
             ]);
@@ -62,7 +62,7 @@ class CommentNewsTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', "/api/v2/news/{$this->news->id}/comments");
+            ->json('GET', "/api/v1/news/{$this->news->id}/comments");
         $response
             ->assertStatus(200)
             ->assertJsonStructure(['pinneds', 'comments']);
@@ -85,7 +85,7 @@ class CommentNewsTest extends TestCase
 
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('DELETE', "/api/v2/news/{$this->news->id}/comments/{$comment->id}");
+            ->json('DELETE', "/api/v1/news/{$this->news->id}/comments/{$comment->id}");
         $response
             ->assertStatus(204);
     }

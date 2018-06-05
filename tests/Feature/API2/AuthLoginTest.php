@@ -31,7 +31,7 @@ class AuthLoginTest extends TestCase
      */
     public function testUserLogin()
     {
-        $response = $this->json('POST', 'api/v2/auth/login', [
+        $response = $this->json('POST', 'api/v1/auth/login', [
             'login' => $this->user->id,
             'password' => 'secret',
         ]);

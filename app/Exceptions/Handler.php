@@ -66,4 +66,21 @@ class Handler extends ExceptionHandler
     {
         return parent::invalidJson($request, new ValidationException($exception));
     }
+
+    public function convertValidationExceptionToResponse1(\Illuminate\Validation\ValidationException $exception, $request)
+    {
+        //return parent::invalidJson($request, new ValidationException($exception));
+
+        $data = $exception->validator->getMessageBag();
+
+        $msg = collect($data)->first();
+        if(is_array($msg)){
+            $msg = $msg[0];
+        }
+        return response()->json([
+            'message' =>$msg,
+
+        ], $exception->status);
+        //return ['code'=> -1,'msg'=>$msg];
+    }
 }

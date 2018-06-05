@@ -32,7 +32,7 @@ class CurrencyNewsTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('POST', "/api/v2/news/categories/{$cate->id}/currency-news", [
+            ->json('POST', "/api/v1/news/categories/{$cate->id}/currency-news", [
                 'title' => 'test',
                 'subject' => 'test',
                 'content' => 'test',
@@ -85,7 +85,7 @@ class CurrencyNewsTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('POST', "/api/v2/news/{$news->id}/currency-pinneds", [
+            ->json('POST', "/api/v1/news/{$news->id}/currency-pinneds", [
                 'amount' => 100,
                 'day' => 1,
             ]);
@@ -126,7 +126,7 @@ class CurrencyNewsTest extends TestCase
 
         $response = $this
             ->actingAs($other, 'api')
-            ->json('POST', "/api/v2/news/{$news->id}/comments/{$comment->id}/currency-pinneds", [
+            ->json('POST', "/api/v1/news/{$news->id}/comments/{$comment->id}/currency-pinneds", [
                 'amount' => 100,
                 'day' => 1,
             ]);
@@ -177,7 +177,7 @@ class CurrencyNewsTest extends TestCase
             ->actingAs($user, 'api')
             ->json(
                 'PATCH',
-                "/api/v2/news/{$news->id}/comments/{$comment->id}/pinneds/{$pinned->id}"
+                "/api/v1/news/{$news->id}/comments/{$comment->id}/pinneds/{$pinned->id}"
             );
         $response
             ->assertStatus(201)
@@ -225,7 +225,7 @@ class CurrencyNewsTest extends TestCase
             ->actingAs($user, 'api')
             ->json(
                 'PATCH',
-                "/api/v2/news/{$news->id}/comments/{$comment->id}/pinneds/{$pinned->id}/reject"
+                "/api/v1/news/{$news->id}/comments/{$comment->id}/pinneds/{$pinned->id}/reject"
             );
         $response
             ->assertStatus(204);

@@ -35,7 +35,7 @@ class TagsTest extends TestCase
      */
     public function testGetTags()
     {
-        $response = $this->getJson('/api/v2/tags');
+        $response = $this->getJson('/api/v1/tags');
 
         $response->assertStatus(200);
 

@@ -15,7 +15,7 @@ class BootstrappersTest extends TestCase
      */
     public function testGetBootstrappers()
     {
-        $response = $this->getJson('/api/v2/bootstrappers');
+        $response = $this->getJson('/api/v1/bootstrappers');
 
         $response->assertStatus(200);
 

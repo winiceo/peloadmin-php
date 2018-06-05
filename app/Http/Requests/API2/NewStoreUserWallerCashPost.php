@@ -6,6 +6,7 @@ declare(strict_types=1);
 
 namespace Leven\Http\Requests\API2;
 
+use Illuminate\Support\Facades\Request;
 use Illuminate\Validation\Rule;
 use Leven\Packages\Wallet\Wallet;
 use Illuminate\Foundation\Http\FormRequest;
@@ -31,16 +32,18 @@ class NewStoreUserWallerCashPost extends FormRequest
      */
     public function rules(UserWalletCashType $typeRepository, CashMinAmountRepository $minAmountRepository)
     {
-         $wallet = new Wallet($this->user());
+        $coin_id = (int)$this->input('coin_id');
+
+        $wallet = new Wallet($this->user(),$coin_id);
 
 
         return [
-//            'amount' => [
-//                'required',
-//                'numeric',
-//                'min:'.$minAmountRepository->get(),
-//                'max:'.$wallet->getWalletModel()->balance,
-//            ],
+            'amount' => [
+                'required',
+                'numeric',
+                'min:'.$minAmountRepository->get(),
+                'max:'.$wallet->getWalletModel()->balance,
+            ],
 
             'address' => ['required'],
         ];

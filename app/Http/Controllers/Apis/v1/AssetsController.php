@@ -2,65 +2,37 @@
 
 namespace Leven\Http\Controllers\Apis\V1;
 
+use Leven\Helpers\CoinHelpers;
+use Leven\Models\NewWallet;
 use Leven\Models\User;
 use Leven\Services\UserAssetsService;
 use Leven\Services\UserWalletService;
+use Illuminate\Http\Request;
 
 
 class AssetsController extends Controller
 {
 
 
-    //资产列表
-    public function index(Request $request, Response $response)
-    {
-        $user = $this->auth->getUser();
+    use CoinHelpers;
+    public function show (Request $request){
+        $user = $request->user();
 
-        $assets = UserAssetsService::index($this->auth->getUser());
-        return $this->json($response, $assets);
-    }
+        $coins=CoinHelpers::get();
 
-    /**
-     * 提现
-     * @param Request $request
-     * @param Response $response
-     * @return Response
-     */
-    public function withdraw(Request $request, Response $response)
-    {
-
-
-        if ($request->isPost()) {
-            $this->validator->request($request, [
-                'coin_id' => v::numeric()->length(1, 1),
-                'address' => v::stringType()->notEmpty(),
-                'amount' => v::numeric()->length(1, 20)->notEmpty()
-
-            ]);
-            $data = $request->getParams();
-
-            $data["user_id"] = $this->auth->getUser()->getUserId();
-
-            $data['order_code'] = time();
-
-            if ($this->validator->isValid()) {
-                $address = UserAssetsService::storeWithdraw($data);
-                return $this->json($response, $address);
-            } else {
-                return $this->error("input error");
-            }
-
+        $wallets=NewWallet::where('user_id',$user->id)->get()->toArray();
+        $assets=[];
+        foreach ($wallets as $wallet) {
+            $wallet['name']=$coins[$wallet['coin_id']]["name"];
+            $wallet['symbol']=$coins[$wallet['coin_id']]["symbol"];
+            unset($wallet["created_at"]);
+            unset($wallet["updated_at"]);
+            $assets[]=$wallet;
         }
-        return $this->error($response);
-
-    }
+        return response()->json(  $assets , 201);
 
 
-    public function history(Request $request, Response $response)
-    {
 
-        $withdraws = UserAssetsService::getHistory($request, $this->auth->getUser(), 20);
-        return $this->json($response, $withdraws);
     }
 
 }

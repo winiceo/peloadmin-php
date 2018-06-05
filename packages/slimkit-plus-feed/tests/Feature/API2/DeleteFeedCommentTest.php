@@ -51,7 +51,7 @@ class DeleteFeedCommentTest extends TestCase
     protected function addFeed($user)
     {
         $response = $this->actingAs($user, 'api')
-            ->json('POST', '/api/v2/feeds', [
+            ->json('POST', '/api/v1/feeds', [
                 'feed_content' => 'test',
                 'feed_from' => 5,
                 'feed_mark' => intval(time().rand(1000, 9999)),
@@ -73,7 +73,7 @@ class DeleteFeedCommentTest extends TestCase
     {
         $response = $this
             ->actingAs($user, 'api')
-            ->json('POST', "/api/v2/feeds/{$feed}/comments", [
+            ->json('POST', "/api/v1/feeds/{$feed}/comments", [
                 'body' => 'test',
             ])
             ->decodeResponseJson();
@@ -94,7 +94,7 @@ class DeleteFeedCommentTest extends TestCase
         $comm = $this->addFeedComment($user, $feed);
 
         $response = $this
-            ->json('DELETE', "/api/v2/feeds/{$feed}/comments/{$comm}");
+            ->json('DELETE', "/api/v1/feeds/{$feed}/comments/{$comm}");
         $response
             ->assertStatus(204);
     }

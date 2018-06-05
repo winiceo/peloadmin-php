@@ -17,7 +17,7 @@ use Zhiyi\Component\ZhiyiPlus\PlusComponentNews\API2\Controllers as API2;
 | REST ful specification.
 |
 */
-Route::group(['prefix' => 'v2'], function (RouteContract $api) {
+Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
     /*
     |-----------------------------------------------------------------------

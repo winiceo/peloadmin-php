@@ -41,7 +41,7 @@ function fileUpload(file, callback) {
 
 // 检测文件是否存在
 function isUploaded(hash, f, callback) {
-  request.get(`/api/v2/files/uploaded/${hash}`)
+  request.get(`/api/v1/files/uploaded/${hash}`)
     .then((res) => {
       if (res.status === 200) return callback(res.data.id);
     })
@@ -66,7 +66,7 @@ function uploadFile(file) {
   let config = {
     headers: { 'Content-Type': 'multipart/form-data' }
   };
-  request.post('/api/v2/files', param, config)
+  request.post('/api/v1/files', param, config)
     .then((res) => {
       if (res.status === 201) return callback(res.data.id);
     })

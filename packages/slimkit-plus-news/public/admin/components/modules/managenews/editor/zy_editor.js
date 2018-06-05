@@ -6,7 +6,7 @@ import fileUpload from '../../../../file_upload_v2';
 
 const md = markdownIt({
     html: true
-}).use(plusImageSyntax, `/api/v2/files/`);
+}).use(plusImageSyntax, `/api/v1/files/`);
 
 function getState(cm, pos) {
     pos = pos || cm.getCursor("start");

@@ -53,7 +53,7 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
     $api->get('/locations/search', API2\LocationController::class.'@search');
 
     // Get hot locations.
-    // @GET /api/v2/locations/hots
+    // @GET /api/v1/locations/hots
     $api->get('/locations/hots', API2\LocationController::class.'@hots');
 
     // Get Advertising space
@@ -66,8 +66,12 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
     // Get a html for about us.
     $api->get('/aboutus', API2\SystemController::class.'@about');
 
+
+    $api->get('/news/h5/{id}', API2\SystemController::class.'@html');
+
+
     // Get all tags.
-    // @Get /api/v2/tags
+    // @Get /api/v1/tags
     $api->get('/tags', API2\TagController::class.'@index');
 
     /*
@@ -95,19 +99,19 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
     });
 
     // 排行榜相关
-    // @Route /api/v2/user/ranks
+    // @Route /api/v1/user/ranks
     $api->group(['prefix' => 'ranks'], function (RouteContract $api) {
 
         // 获取粉丝排行
-        // @GET /api/v2/user/ranks/followers
+        // @GET /api/v1/user/ranks/followers
         $api->get('/followers', API2\RankController::class.'@followers');
 
         // 获取财富排行
-        // @GET /api/v2/user/ranks/balance
+        // @GET /api/v1/user/ranks/balance
         $api->get('/balance', API2\RankController::class.'@balance');
 
         // 获取收入排行
-        // @GET /api/v2/user/ranks/income
+        // @GET /api/v1/user/ranks/income
         $api->get('/income', API2\RankController::class.'@income');
     });
     /*
@@ -190,7 +194,7 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
         $api->get('/{user}/followings', API2\UserFollowController::class.'@followings');
 
         // Get the user's tags.
-        // @GET /api/v2/users/:user/tags
+        // @GET /api/v1/users/:user/tags
         $api->get('/{user}/tags', API2\TagUserController::class.'@userTgas');
     });
 
@@ -219,19 +223,20 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
 
         $api->group(['prefix' => 'wallet'], function (RouteContract $api) {
 
+            $api->post('/assets', API2\AssetsController::class.'@show');
 
             // 获取提现记录
-            $api->get('/cashes', API2\NewWalletCashController::class.'@show');
+            $api->post('/withdraw/history', API2\NewWalletCashController::class.'@show');
 
             // 发起提现申请
-            $api->post('/cashes', API2\NewWalletCashController::class.'@store');
+            $api->post('/withdraw', API2\NewWalletCashController::class.'@store');
 
 
             // 发起充值
-            $api->post('/recharge', API2\NewWalletRechargeController::class.'@store');
+            $api->post('/deposit', API2\NewWalletRechargeController::class.'@store');
 
             // 钱包订单列表
-            $api->get('/orders', API2\NewWalletRechargeController::class.'@list');
+            $api->post('/orders', API2\NewWalletRechargeController::class.'@list');
 
             // 取回凭据
             $api->get('/orders/{order}', API2\NewWalletRechargeController::class.'@retrieve');
@@ -406,19 +411,19 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
             $api->put('/password', API2\ResetPasswordController::class.'@reset');
 
             // The tags route of the authenticated user.
-            // @Route /api/v2/user/tags
+            // @Route /api/v1/user/tags
             $api->group(['prefix' => 'tags'], function (RouteContract $api) {
 
                 // Get all tags of the authenticated user.
-                // @GET /api/v2/user/tags
+                // @GET /api/v1/user/tags
                 $api->get('/', API2\TagUserController::class.'@index');
 
                 // Attach a tag for the authenticated user.
-                // @PUT /api/v2/user/tags/:tag
+                // @PUT /api/v1/user/tags/:tag
                 $api->put('/{tag}', API2\TagUserController::class.'@store');
 
                 // Detach a tag for the authenticated user.
-                // @DELETE /api/v2/user/tags/:tag
+                // @DELETE /api/v1/user/tags/:tag
                 $api->delete('/{tag}', API2\TagUserController::class.'@destroy');
             });
 
@@ -431,7 +436,7 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
             /*
              * 解除手机号码绑定.
              *
-             * @DELETE /api/v2/user/phone
+             * @DELETE /api/v1/user/phone
              * @author Seven Du <shiweidu@outlook.com>
              */
             $api->delete('/phone', API2\UserPhoneController::class.'@delete');
@@ -439,7 +444,7 @@ Route::group(['prefix' => 'v1'], function (RouteContract $api) {
             /*
              * 解除用户邮箱绑定.
              *
-             * @DELETE /api/v2/user/email
+             * @DELETE /api/v1/user/email
              * @author Seven Du <shiweidu@outlook.com>
              */
             $api->delete('/email', API2\UserEmailController::class.'@delete');

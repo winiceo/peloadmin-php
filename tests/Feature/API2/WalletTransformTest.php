@@ -32,7 +32,7 @@ class WalletTransformTest extends TestCase
      */
     public function testTransfer()
     {
-        $response = $this->actingAs($this->user, 'api')->json('POST', '/api/v2/plus-pay/transform', ['amount' => 2121]);
+        $response = $this->actingAs($this->user, 'api')->json('POST', '/api/v1/plus-pay/transform', ['amount' => 2121]);
 
         $response->assertStatus(201);
     }

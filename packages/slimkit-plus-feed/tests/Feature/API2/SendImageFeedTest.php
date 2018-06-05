@@ -52,7 +52,7 @@ class SendImageFeedTest extends TestCase
     {
         $file = $this
             ->actingAs($user, 'api')
-            ->json('POST', '/api/v2/files', [
+            ->json('POST', '/api/v1/files', [
                 'file' => UploadedFile::fake()->image('test.jpg')->size(0.00),
                 ]
             )
@@ -71,7 +71,7 @@ class SendImageFeedTest extends TestCase
         $user = $this->createUser();
         $response = $this
             ->actingAs($user, 'api')
-            ->json('POST', '/api/v2/feeds', [
+            ->json('POST', '/api/v1/feeds', [
                 'feed_from' => 5,
                 'feed_mark' => intval(time().rand(1000, 9999)),
                 'images' => [
@@ -94,7 +94,7 @@ class SendImageFeedTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('POST', '/api/v2/feeds', []);
+            ->json('POST', '/api/v1/feeds', []);
 
         $response->assertStatus(403);
     }

@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class NewWallet extends Model
 {
-    protected $fillable = ['user_id', 'balance', 'total_expenses', 'total_income'];
+    protected $fillable = ['user_id','coin_id', 'balance', 'total_expenses', 'total_income'];
 
     /**
      * The table associated with the model.

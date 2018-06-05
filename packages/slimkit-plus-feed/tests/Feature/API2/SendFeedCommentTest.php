@@ -52,7 +52,7 @@ class SendFeedCommentTest extends TestCase
     protected function addFeed($user)
     {
         $response = $this->actingAs($user, 'api')
-            ->json('POST', '/api/v2/feeds', [
+            ->json('POST', '/api/v1/feeds', [
                 'feed_content' => 'test',
                 'feed_from' => 5,
                 'feed_mark' => intval(time().rand(1000, 9999)),
@@ -74,7 +74,7 @@ class SendFeedCommentTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('POST', "/api/v2/feeds/{$feed}/comments", [
+            ->json('POST', "/api/v1/feeds/{$feed}/comments", [
                 'body' => 'test',
             ]);
         $response
@@ -95,7 +95,7 @@ class SendFeedCommentTest extends TestCase
 
         $response = $this
             ->actingAs($owner, 'api')
-            ->json('POST', "/api/v2/feeds/{$feed}/comments", [
+            ->json('POST', "/api/v1/feeds/{$feed}/comments", [
                 'body' => 'test',
                 'reply_user' => $other->id,
             ]);

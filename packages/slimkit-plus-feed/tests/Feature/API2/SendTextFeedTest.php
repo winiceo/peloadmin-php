@@ -53,7 +53,7 @@ class SendTextFeedTest extends TestCase
         $user = $this->createUser();
         $response = $this
             ->actingAs($user, 'api')
-            ->json('POST', '/api/v2/feeds', [
+            ->json('POST', '/api/v1/feeds', [
                 'feed_content' => 'Test send public feed.',
                 'feed_from' => 5,
                 'feed_mark' => intval(time().rand(1000, 9999)),
@@ -74,7 +74,7 @@ class SendTextFeedTest extends TestCase
         $user = factory(UserModel::class)->create();
         $response = $this
             ->actingAs($user, 'api')
-            ->json('POST', '/api/v2/feeds', []);
+            ->json('POST', '/api/v1/feeds', []);
         $response->assertStatus(403);
     }
 }

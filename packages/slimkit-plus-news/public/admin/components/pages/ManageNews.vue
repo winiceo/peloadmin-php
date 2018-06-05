@@ -79,12 +79,12 @@
                     </div>
                 </div>
                 <!-- 标签 -->
-                <div class="form-group">
-                    <label class="col-sm-1 control-label">标签</label>
-                    <div class="col-sm-11">
-                        <module-tag-select :value1="tagsIDs" :max="5" v-model="params.tags" @tips="publishMessage"></module-tag-select>
-                    </div>
-                </div>
+                <!--<div class="form-group">-->
+                    <!--<label class="col-sm-1 control-label">标签</label>-->
+                    <!--<div class="col-sm-11">-->
+                        <!--<module-tag-select :value1="tagsIDs" :max="5" v-model="params.tags" @tips="publishMessage"></module-tag-select>-->
+                    <!--</div>-->
+                <!--</div>-->
                 <!-- 封面图 -->
                 <div class="form-group">
                     <div class="col-sm-6">

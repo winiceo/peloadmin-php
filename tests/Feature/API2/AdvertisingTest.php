@@ -22,7 +22,7 @@ class AdvertisingTest extends TestCase
      */
     public function testGetAdvertisingSpace()
     {
-        $response = $this->json('GET', '/api/v2/advertisingspace');
+        $response = $this->json('GET', '/api/v1/advertisingspace');
 
         collect($response->json())->map(function ($adspace) {
             $this->assertArrayHasKey('id', $adspace);
@@ -42,14 +42,14 @@ class AdvertisingTest extends TestCase
      */
     public function testGetAdvertising()
     {
-        $spaces = $this->json('GET', '/api/v2/advertisingspace')->json();
+        $spaces = $this->json('GET', '/api/v1/advertisingspace')->json();
 
         collect($spaces)->map(function ($space) {
             factory(AdvertisingModel::class)->create(['space_id' => $space['id']]);
             factory(AdvertisingModel::class)->create(['space_id' => $space['id']]);
         });
 
-        $response = $this->json('GET', '/api/v2/advertisingspace/'.$spaces[0]['id'].'/advertising');
+        $response = $this->json('GET', '/api/v1/advertisingspace/'.$spaces[0]['id'].'/advertising');
 
         collect($response->json())->map(function ($ad) {
             $this->assertAdvertisingData($ad);
@@ -64,14 +64,14 @@ class AdvertisingTest extends TestCase
      */
     public function testGetMuliteAdvertising()
     {
-        $spaces = $this->json('GET', '/api/v2/advertisingspace')->json();
+        $spaces = $this->json('GET', '/api/v1/advertisingspace')->json();
 
         collect($spaces)->map(function ($space) {
             factory(AdvertisingModel::class)->create(['space_id' => $space['id']]);
             factory(AdvertisingModel::class)->create(['space_id' => $space['id']]);
         });
 
-        $response = $this->json('GET', '/api/v2/advertisingspace/advertising?space='.$spaces[0]['id']);
+        $response = $this->json('GET', '/api/v1/advertisingspace/advertising?space='.$spaces[0]['id']);
 
         collect($response->json())->map(function ($ad) {
             $this->assertAdvertisingData($ad);

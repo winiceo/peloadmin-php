@@ -56,7 +56,7 @@ export default {
         uploadImg(e) {
             let file = e.target.files[0];
             fileUpload(file, (id) => {
-                this.imgSrc = `/api/v2/files/${id}`;
+                this.imgSrc = `/api/v1/files/${id}`;
             });
         },
 

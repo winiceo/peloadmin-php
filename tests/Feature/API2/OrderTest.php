@@ -39,7 +39,7 @@ class OrderTest extends TestCase
     {
         $token = $this->guard()->login($this->user);
 
-        $firstrResponse = $this->json('GET', '/api/v2/plus-pay/orders?limit=1', [
+        $firstrResponse = $this->json('GET', '/api/v1/plus-pay/orders?limit=1', [
             'Authorization' => 'Bearer '.$token,
         ]);
 
@@ -50,7 +50,7 @@ class OrderTest extends TestCase
 
         $this->assertOrderData($data);
 
-        $after = $this->json('GET', '/api/v2/plus-pay/orders?limit=1&after='.$data['id'], [
+        $after = $this->json('GET', '/api/v1/plus-pay/orders?limit=1&after='.$data['id'], [
             'Authorization' => 'Bearer '.$token,
         ]);
 

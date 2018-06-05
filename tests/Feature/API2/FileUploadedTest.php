@@ -49,7 +49,7 @@ class FileUploadedTest extends TestCase
         $hash = md5_file((string) $file);
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/files/uploaded/'.$hash);
+            ->json('GET', '/api/v1/files/uploaded/'.$hash);
 
         $response->assertStatus(404);
     }
@@ -76,7 +76,7 @@ class FileUploadedTest extends TestCase
         ]);
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/files/uploaded/'.$hash);
+            ->json('GET', '/api/v1/files/uploaded/'.$hash);
 
         $response
             ->assertStatus(200)

@@ -43,7 +43,7 @@ class PinnedNewsTest extends TestCase
 
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/news/{$this->news->id}/pinneds", [
+            ->json('POST', "/api/v1/news/{$this->news->id}/pinneds", [
                 'amount' => 100,
                 'day' => 1,
             ]);
@@ -61,7 +61,7 @@ class PinnedNewsTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/news/pinneds');
+            ->json('GET', '/api/v1/news/pinneds');
         $response
             ->assertStatus(200)
             ->assertJsonStructure([]);
@@ -87,7 +87,7 @@ class PinnedNewsTest extends TestCase
 
         $response = $this
             ->actingAs($other, 'api')
-            ->json('POST', "/api/v2/news/{$this->news->id}/comments/{$comment->id}/pinneds", [
+            ->json('POST', "/api/v1/news/{$this->news->id}/comments/{$comment->id}/pinneds", [
                 'amount' => 100,
                 'day' => 1,
             ]);
@@ -106,7 +106,7 @@ class PinnedNewsTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', '/api/v2/news/comments/pinneds');
+            ->json('GET', '/api/v1/news/comments/pinneds');
         $response
             ->assertStatus(200)
             ->assertJsonStructure([]);
@@ -145,7 +145,7 @@ class PinnedNewsTest extends TestCase
             ->actingAs($this->user, 'api')
             ->json(
                 'PATCH',
-                "/api/v2/news/{$this->news->id}/comments/{$comment->id}/pinneds/{$pinned->id}"
+                "/api/v1/news/{$this->news->id}/comments/{$comment->id}/pinneds/{$pinned->id}"
             );
         $response
             ->assertStatus(201)
@@ -185,7 +185,7 @@ class PinnedNewsTest extends TestCase
             ->actingAs($this->user, 'api')
             ->json(
                 'PATCH',
-                "/api/v2/news/{$this->news->id}/comments/{$comment->id}/pinneds/{$pinned->id}/reject"
+                "/api/v1/news/{$this->news->id}/comments/{$comment->id}/pinneds/{$pinned->id}/reject"
             );
         $response
             ->assertStatus(204);
@@ -224,7 +224,7 @@ class PinnedNewsTest extends TestCase
             ->actingAs($this->user, 'api')
             ->json(
                 'DELETE',
-                "/api/v2/news/{$this->news->id}/comments/{$comment->id}/pinneds/{$pinned->id}"
+                "/api/v1/news/{$this->news->id}/comments/{$comment->id}/pinneds/{$pinned->id}"
             );
         $response
             ->assertStatus(204);

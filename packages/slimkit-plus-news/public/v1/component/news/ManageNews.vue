@@ -181,7 +181,7 @@ export default {
 
         // 获取标签列表
         getTagesAllList() {
-            request.get('/api/v2/tags')
+            request.get('/api/v1/tags')
                 .then(({ status, data = [] }) => {
                     if(!status) return this.showTips("error", '获取标签列表失败！');
                     this.tagsAll = data;

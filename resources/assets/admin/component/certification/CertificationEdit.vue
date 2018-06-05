@@ -186,13 +186,13 @@ const PersonalCertificationEdit = {
             this.certification.type = data.certification_name;
             this.certification.desc = data.data.desc;
             this.certification.files = data.data.files;
-            this.upload.front = '/api/v2/files/' + this.certification.files[0]
+            this.upload.front = '/api/v1/files/' + this.certification.files[0]
             
             if ( data.certification_name === 'org' ) {
               this.certification.org_name = data.data.org_name;
               this.certification.org_address = data.data.org_address;
             } else {
-              this.upload.back = '/api/v2/files/' + this.certification.files[1]
+              this.upload.back = '/api/v1/files/' + this.certification.files[1]
             }
 
           }).catch(response => {

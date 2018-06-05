@@ -44,7 +44,7 @@ class ReportNewsTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/news/{$this->news->id}/reports", [
+            ->json('POST', "/api/v1/news/{$this->news->id}/reports", [
                 'reason' => 'test report',
             ]);
         $response

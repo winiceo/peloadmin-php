@@ -36,7 +36,7 @@ class EditPublishNewsTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('PATCH', "/api/v2/news/categories/{$cate->id}/news/{$news->id}", [
+            ->json('PATCH', "/api/v1/news/categories/{$cate->id}/news/{$news->id}", [
                 'subject' => 'test',
                 'title' => 'test',
                 'content' => 'test',
@@ -64,7 +64,7 @@ class EditPublishNewsTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('PATCH', "/api/v2/news/categories/{$cate->id}/news/{$news->id}", [
+            ->json('PATCH', "/api/v1/news/categories/{$cate->id}/news/{$news->id}", [
                 'subject' => 'test',
                 'title' => 'test',
                 'content' => 'test',

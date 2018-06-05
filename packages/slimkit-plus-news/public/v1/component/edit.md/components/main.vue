@@ -75,7 +75,7 @@
   // 自定义解析 图片
   import plusImagePlugin from 'marked-plus-image';
 
-  const basename = '/api/v2/files';
+  const basename = '/api/v1/files';
 
   marked.setOptions({
     basename,

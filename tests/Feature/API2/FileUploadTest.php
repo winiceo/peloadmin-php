@@ -43,7 +43,7 @@ class FileUploadTest extends TestCase
 
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('POST', '/api/v2/files', ['file' => $file]);
+            ->json('POST', '/api/v1/files', ['file' => $file]);
 
         $response->assertStatus(201)->assertJsonStructure(['id', 'message']);
     }

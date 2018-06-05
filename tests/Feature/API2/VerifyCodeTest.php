@@ -35,7 +35,7 @@ class VerifyCodeTest extends TestCase
     {
         $token = $this->guard()->login($this->user);
 
-        $responseByPhone = $this->json('POST', 'api/v2/verifycodes?token='.$token, [
+        $responseByPhone = $this->json('POST', 'api/v1/verifycodes?token='.$token, [
             'phone' => $this->user->phone,
         ]);
 
@@ -52,7 +52,7 @@ class VerifyCodeTest extends TestCase
     {
         $token = $this->guard()->login($this->user);
 
-        $responseByEmail = $this->json('POST', 'api/v2/verifycodes?token='.$token, [
+        $responseByEmail = $this->json('POST', 'api/v1/verifycodes?token='.$token, [
             'email' => $this->user->email,
         ]);
 

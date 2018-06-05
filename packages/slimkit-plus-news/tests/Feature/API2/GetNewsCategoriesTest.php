@@ -25,7 +25,7 @@ class GetNewsCategoriesTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('GET', '/api/v2/news/cates');
+            ->json('GET', '/api/v1/news/cates');
         $response
             ->assertStatus(200)
             ->assertJsonStructure(['my_cates', 'more_cates']);
@@ -39,7 +39,7 @@ class GetNewsCategoriesTest extends TestCase
     public function testNotLoggedGetNewsCategories()
     {
         $response = $this
-            ->json('GET', '/api/v2/news/cates');
+            ->json('GET', '/api/v1/news/cates');
         $response
             ->assertStatus(200)
             ->assertJsonStructure(['my_cates', 'more_cates']);

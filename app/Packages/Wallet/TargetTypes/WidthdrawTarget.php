@@ -33,7 +33,9 @@ class WidthdrawTarget extends Target
             return true;
         }
 
+
         $this->initWallet();
+
 
         $orderHandle = function () use ($type, $address,$coin_id) {
             $this->order->saveStateSuccess();
@@ -72,7 +74,11 @@ class WidthdrawTarget extends Target
      */
     protected function initWallet()
     {
-        $this->wallet = new Wallet($this->order->getOrderModel()->owner_id);
+        $this->wallet = new Wallet(
+            $this->order->getOrderModel()->owner_id,
+            $this->order->getOrderModel()->coin_id
+
+        );
     }
 
     /**

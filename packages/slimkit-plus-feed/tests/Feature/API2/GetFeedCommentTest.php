@@ -51,7 +51,7 @@ class GetFeedCommentTest extends TestCase
     protected function addFeed($user)
     {
         $response = $this->actingAs($user, 'api')
-            ->json('POST', '/api/v2/feeds', [
+            ->json('POST', '/api/v1/feeds', [
                 'feed_content' => 'test',
                 'feed_from' => 5,
                 'feed_mark' => intval(time().rand(1000, 9999)),
@@ -72,7 +72,7 @@ class GetFeedCommentTest extends TestCase
     protected function addFeedComment($user, $feed)
     {
         $response = $this->actingAs($user, 'api')
-            ->json('POST', "/api/v2/feeds/{$feed}/comments", [
+            ->json('POST', "/api/v1/feeds/{$feed}/comments", [
                 'body' => 'test',
             ])
             ->decodeResponseJson();
@@ -94,7 +94,7 @@ class GetFeedCommentTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('GET', "/api/v2/feeds/{$feed}/comments");
+            ->json('GET', "/api/v1/feeds/{$feed}/comments");
         $response
             ->assertStatus(200)
             ->assertJsonStructure(['pinneds', 'comments']);
@@ -113,7 +113,7 @@ class GetFeedCommentTest extends TestCase
         $this->addFeedComment($user, $feed);
 
         $response = $this
-            ->json('GET', "/api/v2/feeds/{$feed}/comments");
+            ->json('GET', "/api/v1/feeds/{$feed}/comments");
         $response
             ->assertStatus(200)
             ->assertJsonStructure(['pinneds', 'comments']);
@@ -132,7 +132,7 @@ class GetFeedCommentTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('GET', "/api/v2/feeds/{$feed}/comments/{$comment}");
+            ->json('GET', "/api/v1/feeds/{$feed}/comments/{$comment}");
 
         $response
             ->assertStatus(200)
@@ -151,7 +151,7 @@ class GetFeedCommentTest extends TestCase
         $comment = $this->addFeedComment($user, $feed);
 
         $response = $this
-            ->json('GET', "/api/v2/feeds/{$feed}/comments/{$comment}");
+            ->json('GET', "/api/v1/feeds/{$feed}/comments/{$comment}");
 
         $response
             ->assertStatus(200)

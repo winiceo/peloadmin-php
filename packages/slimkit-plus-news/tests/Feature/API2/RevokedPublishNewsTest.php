@@ -37,7 +37,7 @@ class RevokedPublishNewsTest extends TestCase
 
         $response = $this
             ->actingAs($user, 'api')
-            ->json('PUT', "/api/v2/news/categories/{$cate->id}/news/{$news->id}");
+            ->json('PUT', "/api/v1/news/categories/{$cate->id}/news/{$news->id}");
         $response
             ->assertStatus(201)
             ->assertJsonStructure(['message']);

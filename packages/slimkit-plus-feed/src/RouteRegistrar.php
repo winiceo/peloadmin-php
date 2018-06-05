@@ -65,7 +65,7 @@ class RouteRegistrar
     {
         $this->router->group([
             'middleware' => ['api'],
-            'prefix' => '/api/v2',
+            'prefix' => '/api/v1',
             'namespace' => 'Zhiyi\\Component\\ZhiyiPlus\\PlusComponentFeed\\API2',
         ], dirname(__DIR__).'/routes/api2.php');
     }

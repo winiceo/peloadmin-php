@@ -173,7 +173,7 @@ const certificationComponent = {
     counts: [],
     categories: [],
     certifications: [],
-    attachmentPath: "/api/v2/files/",
+    attachmentPath: "/api/v1/files/",
     reject: {
       id: "",
       content: "",

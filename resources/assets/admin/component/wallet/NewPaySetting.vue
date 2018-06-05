@@ -16,7 +16,7 @@
         <blockquote>
           <p>ThinkSNS+增加使用微信支付/支付宝支付</p>
           <footer>服务器必须安装 OpenSSL 的 PHP 拓展。</footer>
-          <footer>微信支付通知地址为 <code>/api/v2/wechatPay/notify</code></footer>
+          <footer>微信支付通知地址为 <code>/api/v1/wechatPay/notify</code></footer>
           <footer><a href="https://pay.weixin.qq.com/wiki/doc/api/index.html">开发文档</a></footer>
         </blockquote>
 
@@ -56,7 +56,7 @@
         <blockquote>
           <p>支付宝支付设置</p>
           <footer>服务器必须安装 OpenSSL 的 PHP 拓展。</footer>
-          <footer>支付宝通知地址为 <code>/api/v2/alipay/notify</code></footer>
+          <footer>支付宝通知地址为 <code>/api/v1/alipay/notify</code></footer>
           <footer><a href="https://docs.open.alipay.com/">开发中心</a></footer>
         </blockquote>
         <div class="form-group">

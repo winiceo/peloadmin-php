@@ -41,6 +41,7 @@ class NewWalletCashController extends Controller
             ->setStatusCode(200);
     }
 
+
     /**
      * 提交提现申请.
      *
@@ -51,12 +52,13 @@ class NewWalletCashController extends Controller
     public function store(NewStoreUserWallerCashPost $request, TypeManager $manager)
     {
 
+
+
         $type = "mainnet";
         $amount = (int)$request->input('amount');
         $address = $request->input('address');
         $coin_id = (int)$request->input('coin_id');
         $user = $request->user();
-
 
 
         if ($manager->driver(Order::TARGET_TYPE_WITHDRAW)->widthdraw($user, $amount, $coin_id,$type, $address) === true) {

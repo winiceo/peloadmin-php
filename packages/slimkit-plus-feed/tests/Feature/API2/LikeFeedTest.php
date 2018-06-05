@@ -40,7 +40,7 @@ class LikeFeedTest extends TestCase
         $response = $this
 
             ->actingAs($this->user, 'api')
-            ->json('POST', "/api/v2/feeds/{$this->feed->id}/like");
+            ->json('POST', "/api/v1/feeds/{$this->feed->id}/like");
         $response
             ->assertStatus(201)
             ->assertJsonStructure(['message']);
@@ -55,7 +55,7 @@ class LikeFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('GET', "/api/v2/feeds/{$this->feed->id}/likes");
+            ->json('GET', "/api/v1/feeds/{$this->feed->id}/likes");
         $response
             ->assertStatus(200);
     }
@@ -69,7 +69,7 @@ class LikeFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user, 'api')
-            ->json('DELETE', "/api/v2/feeds/{$this->feed->id}/unlike");
+            ->json('DELETE', "/api/v1/feeds/{$this->feed->id}/unlike");
         $response
             ->assertStatus(204);
     }

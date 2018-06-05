@@ -45,7 +45,7 @@ class RewardFeedTest extends TestCase
 
         $response = $this
             ->actingAs($this->other, 'api')
-            ->json('POST', "/api/v2/feeds/{$this->feed->id}/rewards", ['amount' => 10]);
+            ->json('POST', "/api/v1/feeds/{$this->feed->id}/rewards", ['amount' => 10]);
 
         $response
             ->assertStatus(201)
@@ -61,7 +61,7 @@ class RewardFeedTest extends TestCase
     {
         $response = $this
             ->actingAs($this->other, 'api')
-            ->json('get', "/api/v2/feeds/{$this->feed->id}/rewards");
+            ->json('get', "/api/v1/feeds/{$this->feed->id}/rewards");
         $response
             ->assertStatus(200);
     }

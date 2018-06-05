@@ -29,8 +29,8 @@ class HomeController extends Controller
             'token' => $jwt->create($request->user()),
             'base_url' => route('news:admin'),
             'csrf_token' => csrf_token(),
-            'api' => url('api/v2'),
-            'files' => url('/api/v2/files'),
+            'api' => url('api/v1'),
+            'files' => url('/api/v1/files'),
         ]);
     }
 

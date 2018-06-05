@@ -7,6 +7,7 @@ declare(strict_types=1);
 namespace Leven\Packages\Wallet;
 
 use JsonSerializable;
+use Leven\Models\Coins;
 use Leven\Models\User as UserModel;
 use Illuminate\Contracts\Support\Jsonable;
 use Illuminate\Contracts\Support\Arrayable;
@@ -28,17 +29,22 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
      */
     protected $wallet;
 
+    protected $coin;
+
     /**
      * Create wallet.
      *
      * @param int|\Leven\Models\User $user
      * @author Seven Du <shiweidu@outlook.com>
      */
-    public function __construct($user = null)
+    public function __construct($user = null,$coin_id=0)
     {
+        $this->setCoin($coin_id);
+
         if ($user) {
             $this->setUser($user);
         }
+
     }
 
     /**
@@ -52,6 +58,13 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
         $this->user = $this->resolveUser($user);
 
         return $this;
+    }
+
+    public function setCoin($coin_id)
+    {
+        $this->coin = Coins::findOrFail($coin_id);
+
+
     }
 
     /**
@@ -153,7 +166,8 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
 
         if (! $this->wallet) {
             $this->wallet = new WalletModel();
-            $this->wallet->owner_id = $user->id;
+            $this->wallet->coin_id=$this->coin->id;
+            $this->wallet->user_id = $user->id;
             $this->wallet->balance = 0;
             $this->wallet->total_income = 0;
             $this->wallet->total_expenses = 0;
@@ -235,6 +249,7 @@ class Wallet implements Arrayable, Jsonable, JsonSerializable
      */
     protected function walletFind(int $user)
     {
-        return WalletModel::find($user);
+        
+        return WalletModel::where('coin_id',$this->coin->id)->where('user_id',$user)->first();
     }
 }
